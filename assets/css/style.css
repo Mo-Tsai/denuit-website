@@ -1,0 +1,373 @@
+/* ═══════════════════════════════════════════════════════════════
+   de nuit — site v2 · Direction B「Nocturne Editorial 夜色編輯風」
+   定稿於 2026-07-16 比稿（Mo 選 B）：
+   夜色暗調、字標收小、編輯式不對稱、滿版章節、安靜獎項行
+   原則不變：色彩／字體／字級全走 CSS variables，定稿只改 :root
+   ═══════════════════════════════════════════════════════════════ */
+
+:root{
+  /* ── 色彩（夜色調） ── */
+  --color-bg:          #20252e;   /* 主背景：夜藍 */
+  --color-bg-soft:     #262b34;   /* 區塊底 */
+  --color-bg-deep:     #171b22;   /* Hero／Footer */
+  --color-text:        #d3cfc7;   /* 主文字：暖米白 */
+  --color-text-bright: #e0dbd1;   /* 標題字 */
+  --color-text-soft:   #828a97;   /* 次要文字 */
+  --color-accent:      #c6955e;   /* 燭光金 */
+  --color-line:        #333a45;   /* 分隔線 */
+  --color-ph-border:   #3d4552;   /* placeholder 細框 */
+  --color-ph-bg:       #242933;   /* placeholder 底 */
+
+  /* ── 字體 ── */
+  --font-display: "Cormorant Garamond", "Noto Serif TC", serif;
+  --font-body:    "Noto Serif TC", "Cormorant Garamond", serif;
+  --font-ui:      "Jost", "Noto Sans TC", sans-serif;   /* 細幾何無襯線 */
+
+  /* ── 字級 ── */
+  --fs-hero-line: clamp(1.9rem, 3.4vw, 3rem);    /* Hero 斜體詩句 */
+  --fs-h1:        clamp(2.2rem, 4.4vw, 3.8rem);
+  --fs-h2:        clamp(2rem, 4vw, 3.4rem);
+  --fs-lede:      clamp(1.3rem, 2vw, 1.8rem);
+  --fs-body:      clamp(1rem, 1.15vw, 1.1rem);
+  --fs-ui:        .68rem;                         /* 導航／圖說／小標 */
+  --fs-kicker:    .62rem;
+
+  /* ── 排版節奏 ── */
+  --ls-ui:          .42em;    /* UI 字距 */
+  --ls-kicker:      .55em;    /* kicker 字距 */
+  --lh-body:        2.1;
+  --space-section:  clamp(140px, 20vh, 240px);
+  --space-inner:    4vw;
+  --maxw-prose:     34em;
+
+  /* ── 影像暗調（夜的統一處理） ── */
+  --img-dim:       brightness(.82) saturate(.93);
+  --img-dim-hero:  brightness(.68) saturate(.9);
+  --img-dim-chapter: brightness(.6) saturate(.9);
+
+  /* ── Hero Plan A 動態參數 ── */
+  --hero-zoom-duration: 18s;
+  --hero-zoom-scale:    1.07;
+  --hero-fade-delay-1:  1.2s;
+  --hero-fade-delay-2:  2.0s;
+  --hero-fade-delay-3:  2.8s;
+}
+
+/* ═══ Reset ═══ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--color-bg);
+  color:var(--color-text);
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  font-weight:300;
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ═══ 通用 ═══ */
+.wrap{padding:0 var(--space-inner)}
+.kicker{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);
+  letter-spacing:var(--ls-kicker);text-transform:uppercase;
+  color:var(--color-accent);margin-bottom:1.8em;
+}
+h1,h2,h3{font-family:var(--font-display);font-weight:300;color:var(--color-text-bright)}
+h1{font-size:var(--fs-h1);letter-spacing:.06em;line-height:1.3}
+h2{font-size:var(--fs-h2);letter-spacing:.08em;margin-bottom:.9em;line-height:1.3}
+.prose{max-width:var(--maxw-prose)}
+.prose p{margin-bottom:1.6em}
+.lede{
+  font-family:var(--font-display);font-style:italic;font-weight:300;
+  font-size:var(--fs-lede);letter-spacing:.05em;line-height:1.8;
+  color:var(--color-accent);margin-bottom:1.4em;
+}
+.btn{
+  display:inline-block;font-family:var(--font-ui);font-weight:300;font-size:var(--fs-ui);
+  letter-spacing:var(--ls-ui);text-transform:uppercase;
+  color:var(--color-accent);border-bottom:1px solid rgba(198,149,94,.4);
+  padding-bottom:.6em;transition:border-color .5s,color .5s;
+}
+.btn:hover{border-color:var(--color-accent);color:var(--color-text-bright)}
+.btn.solid{border:1px solid rgba(198,149,94,.55);padding:1.1em 3em;color:var(--color-accent)}
+.btn.solid:hover{background:var(--color-accent);color:var(--color-bg-deep)}
+.arrow-link{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-ui);
+  letter-spacing:var(--ls-ui);text-transform:uppercase;color:var(--color-accent);
+  border-bottom:1px solid rgba(198,149,94,.35);padding-bottom:.55em;transition:border-color .5s;
+}
+.arrow-link:hover{border-color:var(--color-accent)}
+section{padding:var(--space-section) 0}
+
+/* ═══ 照片：夜的統一暗調＋內暈影 ═══ */
+.photo{margin:0;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;filter:var(--img-dim);transition:transform 1.6s cubic-bezier(.22,.6,.2,1)}
+.photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px 18px rgba(18,21,28,.45);pointer-events:none}
+.photo:hover img{transform:scale(1.035)}
+.photo.landscape{aspect-ratio:3/2}
+.photo.portrait{aspect-ratio:4/5}
+.photo.wide{aspect-ratio:16/7}
+figcaption,.figcap{
+  margin-top:1.6em;font-family:var(--font-ui);font-weight:300;
+  font-size:var(--fs-kicker);letter-spacing:var(--ls-kicker);
+  text-transform:uppercase;color:var(--color-text-soft);
+}
+
+/* ═══ 照片 placeholder（未到位素材：安靜的夜色塊） ═══ */
+.ph{
+  border:1px solid var(--color-ph-border);
+  background:var(--color-ph-bg);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;gap:.7em;padding:2.5em 1.8em;width:100%;
+  font-family:var(--font-ui);font-weight:300;color:var(--color-text-soft);
+}
+.ph .ph-need{font-size:.8rem;letter-spacing:.14em;color:var(--color-text)}
+.ph .ph-src{font-size:.66rem;letter-spacing:.2em;color:var(--color-accent)}
+.ph .ph-alt{font-size:.66rem;letter-spacing:.08em;max-width:32em;line-height:1.9}
+.ph.landscape{aspect-ratio:3/2}
+.ph.wide{aspect-ratio:16/7}
+.ph.portrait{aspect-ratio:4/5}
+
+/* ═══ Header：輕、小字標 ═══ */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.8em var(--space-inner);
+  font-family:var(--font-ui);font-weight:300;
+  background:linear-gradient(to bottom, rgba(18,21,28,.72), transparent);
+}
+.brand{font-family:var(--font-display);font-weight:400;font-size:1.25rem;letter-spacing:.2em;color:var(--color-text-bright);text-transform:lowercase}
+.site-nav{display:flex;gap:3em;font-size:var(--fs-ui);letter-spacing:var(--ls-ui);text-transform:uppercase}
+.site-nav a{color:var(--color-text-soft);transition:color .4s}
+.site-nav a:hover,.site-nav a.active{color:var(--color-text-bright)}
+.head-right{display:flex;align-items:center;gap:2.2em;font-size:var(--fs-ui)}
+.lang-switch{display:flex;gap:1.1em;font-family:var(--font-ui);letter-spacing:.18em}
+.lang-switch a{color:var(--color-text-soft)}
+.lang-switch a.active{color:var(--color-accent)}
+.nav-cta{
+  font-family:var(--font-ui);letter-spacing:var(--ls-ui);text-transform:uppercase;
+  color:var(--color-accent);border-bottom:1px solid rgba(198,149,94,.4);padding-bottom:.4em;
+}
+.nav-burger{display:none}
+
+/* ═══ Hero｜Plan A：夜色滿版＋左下詩句（字標收進 header） ═══
+   Plan C 升級：.hero-media 內的 <img> 換成 <video class="hero-img">，其餘不動 */
+.hero{position:relative;height:100svh;min-height:640px;padding:0;overflow:hidden;background:var(--color-bg-deep)}
+.hero-media{position:absolute;inset:0}
+.hero-img{
+  width:100%;height:100%;object-fit:cover;
+  filter:var(--img-dim-hero);
+  animation:heroZoom var(--hero-zoom-duration) ease-out forwards;
+}
+.hero .ph{position:absolute;inset:0;height:100%;border:none;outline:1px solid var(--color-ph-border);outline-offset:-28px}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 60% 40%, transparent 25%, rgba(18,21,28,.8)),
+    linear-gradient(to top, rgba(18,21,28,.9), transparent 50%);
+}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(var(--hero-zoom-scale))}}
+.hero-caption{position:absolute;left:var(--space-inner);bottom:9vh;z-index:2;max-width:36em;text-align:left;padding:0}
+.hero-wordmark{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);
+  letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--color-accent);
+  opacity:0;animation:fadeUp 1.8s ease var(--hero-fade-delay-1) forwards;
+}
+.hero-line{
+  font-family:var(--font-display);font-style:italic;font-weight:300;
+  font-size:var(--fs-hero-line);letter-spacing:.05em;line-height:1.55;
+  color:var(--color-text-bright);margin-top:1.4em;
+  opacity:0;animation:fadeUp 1.8s ease var(--hero-fade-delay-2) forwards;
+}
+.hero-actions{margin-top:2.6em;opacity:0;animation:fadeUp 1.8s ease var(--hero-fade-delay-3) forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{
+  position:absolute;bottom:3vh;right:var(--space-inner);z-index:2;
+  font-family:var(--font-ui);font-weight:300;font-size:.58rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--color-text-soft);opacity:0;animation:fadeUp 1.8s ease 3.4s forwards;
+}
+
+/* ═══ 獎項：安靜的一行 ═══ */
+.awards-band{
+  padding:7em var(--space-inner) 0;background:none;border:none;text-align:left;
+}
+.awards-band p{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);
+  letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--color-text-soft);
+}
+.awards-band .star{color:var(--color-accent)}
+
+/* ═══ 品牌宣言＋圖：編輯式錯落 ═══ */
+.statement{padding:8em 0 0;text-align:left}
+.statement .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw}
+.statement .kicker{grid-column:2/6}
+.statement p{
+  grid-column:2/7;
+  font-family:var(--font-display);font-style:italic;font-weight:300;
+  font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:.05em;line-height:1.95;
+  max-width:none;margin:0;color:var(--color-text-bright);
+}
+.statement .st-img{grid-column:8/12;margin-top:9vh}
+
+/* ═══ 章節：滿版影像＋左下字幕（首頁 Cuisine／Chef） ═══ */
+.chapter{position:relative;height:88svh;min-height:520px;overflow:hidden;padding:0}
+.chapter .photo,.chapter figure{position:absolute;inset:0;aspect-ratio:auto}
+.chapter img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:var(--img-dim-chapter)}
+.chapter::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(18,21,28,.9), transparent 55%),
+             radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(18,21,28,.5));
+}
+.chapter .cap{position:absolute;left:var(--space-inner);bottom:9vh;z-index:2}
+.chapter .cap .kicker{margin-bottom:1.2em}
+.chapter .cap h2{margin:0}
+.chapter .cap .chapter-link{display:inline-block;margin-top:2.2em}
+
+/* 章節後的文字段：offset 不置中 */
+.passage{padding:9em 0}
+.passage .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw}
+.passage .txt{grid-column:6/11}
+.passage.alt .txt{grid-column:2/7}
+
+/* ═══ 首頁訂位段：安靜置中 ═══ */
+.resv-invite{text-align:center}
+.resv-invite .prose{margin:0 auto 3em;max-width:30em}
+
+/* ═══ Cuisine gallery：編輯式錯落（nth-child 節奏） ═══ */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw;row-gap:0}
+.gallery > *{grid-column:1/-1}
+.gallery > *:nth-child(1){grid-column:1/-1;aspect-ratio:16/8;margin-bottom:12vh}
+.gallery > *:nth-child(2){grid-column:1/8;margin-bottom:14vh}
+.gallery > *:nth-child(3){grid-column:9/13;margin-top:16vh;margin-bottom:14vh}
+.gallery > *:nth-child(4){grid-column:3/7;margin-bottom:14vh}
+.gallery > *:nth-child(5){grid-column:8/13;margin-top:10vh;margin-bottom:14vh}
+.gallery > *:nth-child(6){grid-column:1/-1;aspect-ratio:16/8;margin-bottom:12vh}
+.gallery > *:nth-child(7){grid-column:1/6;margin-bottom:14vh}
+.gallery > *:nth-child(8){grid-column:7/13;margin-top:14vh;margin-bottom:14vh}
+.gallery > *:nth-child(9){grid-column:2/8;margin-bottom:6vh}
+.gallery > *:nth-child(10){grid-column:9/13;margin-top:12vh;margin-bottom:6vh}
+.gallery .photo.wide,.gallery .ph.wide{aspect-ratio:16/8}
+
+/* ═══ Menu：去卡片化，純排版 ═══ */
+.menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:4vw;margin-top:4em}
+.mcard{border:none;border-top:1px solid var(--color-line);padding:2.4em 0 0;text-align:left;background:none}
+.mcard h3{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);
+  letter-spacing:var(--ls-kicker);text-transform:uppercase;color:var(--color-accent);margin-bottom:1.6em;
+}
+.mcard p{font-size:.95rem;color:var(--color-text-soft);font-family:var(--font-body);line-height:2.2}
+
+/* ═══ About ═══ */
+.bio-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw;align-items:start}
+.bio-grid > :first-child{grid-column:1/6}
+.bio-grid > :last-child{grid-column:7/12;padding-top:6vh}
+.team-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw;margin-top:4em}
+.team-grid > *:nth-child(1){grid-column:1/8}
+.team-grid > *:nth-child(2){grid-column:9/13;margin-top:12vh}
+.team-grid > *:nth-child(3){grid-column:2/6;margin-top:6vh}
+.team-grid > *:nth-child(4){grid-column:7/13;margin-top:14vh}
+.space-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw;margin-top:4em}
+.space-grid > *:nth-child(1){grid-column:1/9}
+.space-grid > *:nth-child(2){grid-column:10/13;margin-top:14vh;aspect-ratio:4/5}
+
+/* ═══ The Journal：去框線編輯式 ═══ */
+.journal-tabs{
+  display:flex;flex-wrap:wrap;gap:1em 2.6em;margin:3em 0 5em;
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-ui);letter-spacing:.28em;text-transform:uppercase;
+}
+.journal-tabs button{
+  background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;
+  color:var(--color-text-soft);padding-bottom:.6em;border-bottom:1px solid transparent;
+  transition:color .4s,border-color .4s;
+}
+.journal-tabs button.active{color:var(--color-accent);border-color:rgba(198,149,94,.5)}
+.journal-cat{margin-bottom:6em}
+.journal-cat > h3{
+  font-family:var(--font-ui);font-weight:300;color:var(--color-text-soft);
+  letter-spacing:var(--ls-kicker);margin-bottom:2.5em;text-transform:uppercase;font-size:var(--fs-kicker);
+}
+.journal-list{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw}
+.journal-list > *:nth-child(odd){grid-column:1/7}
+.journal-list > *:nth-child(even){grid-column:8/13;margin-top:10vh}
+.jcard{border:none;padding:0}
+.jcard .ph,.jcard .photo{aspect-ratio:16/9;border-left:1px solid var(--color-ph-border);border-right:1px solid var(--color-ph-border)}
+.jcard h4{
+  font-family:var(--font-display);font-weight:300;font-size:1.4rem;letter-spacing:.06em;
+  color:var(--color-text-bright);margin:1.4em 0 .3em;
+}
+.jcard .jdate{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);letter-spacing:var(--ls-kicker);
+  color:var(--color-accent);margin-top:2em;
+}
+.jcard p{font-size:.95rem;color:var(--color-text-soft);margin-top:.7em;line-height:2.1;max-width:32em}
+
+/* ═══ Reservation ═══ */
+.notes{max-width:var(--maxw-prose);margin-bottom:4em}
+.notes li{padding:1.3em 0 1.3em 2em;border-bottom:1px solid var(--color-line);position:relative;font-weight:300}
+.notes li::before{content:"✶";position:absolute;left:0;color:var(--color-accent);font-size:.7em;top:1.9em}
+.resv-window{border:1px solid var(--color-line)}
+.resv-window iframe{width:100%;height:720px;border:0;display:block;background:#fff}
+
+/* ═══ Footer：安靜 ═══ */
+.site-footer{
+  background:var(--color-bg-deep);border-top:1px solid var(--color-line);
+  padding:6em 0 3.5em;margin-top:var(--space-section);
+  font-family:var(--font-ui);font-weight:300;font-size:.78rem;letter-spacing:.06em;color:var(--color-text-soft);
+}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-inner)}
+.footer-grid h3{
+  font-family:var(--font-ui);font-weight:300;font-size:var(--fs-kicker);letter-spacing:var(--ls-kicker);
+  text-transform:uppercase;color:var(--color-accent);margin-bottom:1.4em;
+}
+.footer-grid p{line-height:2.2}
+.footer-grid a:hover{color:var(--color-text)}
+.footer-base{
+  margin-top:4.5em;padding-top:2.5em;border-top:1px solid var(--color-line);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;
+}
+.footer-word{font-family:var(--font-display);font-style:italic;font-weight:300;letter-spacing:.1em;font-size:1.05rem;color:var(--color-text)}
+
+/* ═══ 內頁 page head ═══ */
+.page-hero{padding-top:calc(var(--space-section) + 40px)}
+.page-hero h1{font-size:var(--fs-h1)}
+
+/* ═══ Reveal ═══ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1.4s cubic-bezier(.22,.6,.2,1),transform 1.4s cubic-bezier(.22,.6,.2,1)}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .hero-img{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .photo img{transition:none}
+}
+
+/* ═══ RWD ═══ */
+@media (max-width: 900px){
+  .site-nav{display:none}
+  .nav-burger{display:block;background:none;border:none;cursor:pointer;width:30px;height:20px;position:relative;z-index:120}
+  .nav-burger span{position:absolute;left:0;width:100%;height:1px;background:var(--color-text);transition:.3s}
+  .nav-burger span:nth-child(1){top:4px}
+  .nav-burger span:nth-child(2){top:14px}
+  body.menu-open .nav-burger span:nth-child(1){top:9px;transform:rotate(45deg)}
+  body.menu-open .nav-burger span:nth-child(2){top:9px;transform:rotate(-45deg)}
+  .mobile-menu{
+    position:fixed;inset:0;z-index:110;background:var(--color-bg-deep);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2em;
+    opacity:0;pointer-events:none;transition:opacity .5s;
+    font-family:var(--font-display);font-weight:300;font-size:1.6rem;letter-spacing:.16em;
+  }
+  body.menu-open .mobile-menu{opacity:1;pointer-events:auto}
+  .mobile-menu .lang-switch{font-family:var(--font-ui);font-size:.8rem;margin-top:2em}
+  .statement .wrap,.passage .wrap{display:block}
+  .statement .st-img{margin-top:3em}
+  .gallery,.journal-list,.team-grid,.space-grid,.bio-grid{display:block}
+  .gallery > *,.journal-list > *,.team-grid > *,.space-grid > *{margin:0 0 3.5em !important}
+  .bio-grid > :last-child{padding-top:2em}
+  .menu-cards{grid-template-columns:1fr;gap:2.5em}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-caption{max-width:88vw}
+}
+@media (min-width: 901px){.mobile-menu{display:none}}

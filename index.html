@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<title>de nuit</title>
+<meta name="robots" content="noindex">
+<script>
+/* 語言導向：預設繁中；瀏覽器語言為 fr → /fr/、en 系 → /en/ */
+(function () {
+  var l = (navigator.language || 'zh').toLowerCase();
+  var dest = 'zh/';
+  if (l.indexOf('fr') === 0) dest = 'fr/';
+  else if (l.indexOf('en') === 0) dest = 'en/';
+  location.replace(dest);
+})();
+</script>
+<meta http-equiv="refresh" content="0; url=zh/">
+</head>
+<body></body>
+</html>
