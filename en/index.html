@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.9">
-<link rel="stylesheet" href="../assets/css/v5.css?v=5.9">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=6.0">
+<link rel="stylesheet" href="../assets/css/v5.css?v=6.0">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "de nuit", "servesCuisine": "Contemporary French", "priceRange": "$$$$", "address": {"@type": "PostalAddress", "streetAddress": "No. 175, Sec. 4, Xinyi Rd., Da'an Dist.", "addressLocality": "Taipei", "addressCountry": "TW"}, "telephone": "+886-2-2700-1958", "email": "info@denuit.com.tw", "acceptsReservations": "https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:30", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "18:00", "closes": "22:30"}], "award": ["MICHELIN Guide Taiwan 2026, One Star", "MICHELIN One Star since 2021", "Tatler Best Taiwan Top 20 2024–2026"], "sameAs": ["https://www.instagram.com/denuit_taipei/", "https://www.facebook.com/denuitTaipei/"], "employee": {"@type": "Person", "name": "Kei Koo", "alternateName": "古俊基", "jobTitle": "Head Chef"}}</script>
 </head>
 <body class="home">
@@ -38,8 +38,7 @@
     <a href="index.html" aria-current="page"><small>I</small>de nuit</a>
     <a href="cuisine.html"><small>II</small>Signatures</a>
     <a href="about.html"><small>III</small>Chef &amp; Team</a>
-    <a href="journal.html"><small>IV</small>Nuits</a>
-    <a href="reservation.html"><small>V</small>Reserve</a>
+    <a href="reservation.html"><small>IV</small>Reserve</a>
   </nav>
   <p class="meta">175, Section 4, Xinyi Road<br>Da'an District, Taipei</p>
 </div>
@@ -72,31 +71,30 @@
 <script>
 (() => {
   const root = document.documentElement;
+  const tcColor = () => { const tc = document.querySelector('meta[name=theme-color]'); if (tc) tc.content = '#303032'; };
   const nav = (performance.getEntriesByType('navigation')[0] || {}).type;
   let internal = false;
   try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
   const skip = nav === 'back_forward' || (nav !== 'reload' && internal) || matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (skip) { root.classList.add('intro-skip'); const tc = document.querySelector('meta[name=theme-color]'); if (tc) tc.content = '#303032'; return; }
+  if (skip) { root.classList.add('intro-skip'); tcColor(); return; }
   root.classList.add('intro');
-  const stop = e => e.preventDefault();
-  const keys = e => { if ([' ', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) e.preventDefault(); };
-  addEventListener('wheel', stop, { passive: false }); addEventListener('touchmove', stop, { passive: false }); addEventListener('keydown', keys);
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   scrollTo(0, 0);
-  setTimeout(() => {
-    root.classList.remove('intro'); root.classList.add('intro-done');
-    const tc = document.querySelector('meta[name=theme-color]'); if (tc) tc.content = '#303032';   // 手機瀏覽器上下列跟著換回頁首色
-    removeEventListener('wheel', stop); removeEventListener('touchmove', stop); removeEventListener('keydown', keys);
-  }, 6600);   // 與 v5.css 的開場時間軸一致
+  let t;
+  const evs = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
+  const finish = (skipped) => {
+    clearTimeout(t); evs.forEach(n => removeEventListener(n, onSkip, true));
+    root.classList.remove('intro'); root.classList.add(skipped ? 'intro-skip' : 'intro-done'); tcColor();
+  };
+  function onSkip(e) { if (e.type === 'wheel') e.preventDefault(); finish(true); }   // 第一下只負責跳過，下一下才開始捲
+  evs.forEach(n => addEventListener(n, onSkip, { capture: true, passive: n !== 'wheel' }));
+  t = setTimeout(() => finish(false), 3200);   // 與 v5.css 的開場時間軸一致
 })();
 </script>
 <section class="mod reveal ">
   <p class="label">About</p>
   <p>de nuit — French for “of the night”. Behind a corridor on Xinyi Road in Taipei, a room set apart from the day.</p>
   <p>Hong Kong-born chef Kei Koo writes Taiwan’s seasons in a French structure.</p>
-</section>
-<section class="mod reveal photo-only">
-  <figure><img src="../assets/img/space-03-corridor.jpg" alt="The corridor off Xinyi Road" loading="lazy"></figure>
 </section>
 <section class="mod reveal ">
   <figure><img src="../assets/img/sig-02.jpg" alt="Quail / Morel / Vin jaune" loading="lazy"></figure>
@@ -107,12 +105,6 @@
   <p class="btns"><a class="btn" href="cuisine.html">View signatures</a></p>
 </section>
 <section class="mod reveal ">
-  <p class="label">Chapitre</p>
-  <h2>Each season, a chapter</h2>
-  <p>Some dishes belong to a single season. New work appears first on Instagram.</p>
-  <p class="btns"><a class="btn" href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a></p>
-</section>
-<section class="mod reveal ">
   <figure><img src="../assets/img/hero-03.jpg" alt="Chef Kei Koo" loading="lazy"></figure>
   <p class="label">Chef</p>
   <h2>Kei Koo</h2>
@@ -120,23 +112,10 @@
   <p class="btns"><a class="btn" href="about.html">Chef &amp; team</a></p>
 </section>
 <section class="mod reveal ">
-  <p class="label">Menu</p>
-  <p>Dinner is served Tuesday to Saturday, <span class="nw">18:00 – 22:30</span>, in eight or ten courses. Lunch is served on Friday and Saturday, <span class="nw">11:30 – 15:00</span>.</p>
-  <p>A sommelier’s pairing and a non-alcoholic pairing are offered.</p>
-</section>
-<section class="mod reveal ">
-  <figure><img src="../assets/img/j-2026-sola.jpg" alt="Sola × de nuit" loading="lazy"></figure>
-  <p class="label">Nuits</p>
-  <p class="sub">March 2026</p>
-  <h2>Sola × de nuit</h2>
-  <p>For two nights, Chef Kosuke Nabeta of Sola in Paris came to Taipei to write one menu with Kei Koo.</p>
-  <p class="btns"><a class="btn" href="journal.html">All nights</a></p>
-</section>
-<section class="mod reveal ">
   <p class="label">Reservations</p>
-  <p>Reservations open at 12:00 noon on the 1st of each month, for the current and following month, and are taken online only.</p>
-  <p>Tables for one to six guests, aged 12 and above. For larger parties and private dining, please write to <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a> two months ahead.</p>
-  <p class="btns"><a class="btn" href="reservation.html">Book a table</a><a class="btn" href="mailto:info@denuit.com.tw">Private dining</a></p>
+  <p>Lunch · Friday &amp; Saturday · <span class="nw">11:30 – 15:00</span><br>Dinner · Tuesday — Saturday · <span class="nw">18:00 – 22:30</span></p>
+  <p>Bookings open at noon on the 1st of each month.</p>
+  <p class="btns"><a class="btn" href="reservation.html">Book a table</a><a class="btn" href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a></p>
 </section>
 <section class="awards reveal">
   <div class="ln" aria-hidden="true"></div>
@@ -151,8 +130,8 @@
   <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
   <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
   <p class="word">It begins with the night.</p>
-  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.9</span></p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.0</span></p>
 </footer>
-<script src="../assets/js/v5.js?v=5.9"></script>
+<script src="../assets/js/v5.js?v=6.0"></script>
 </body>
 </html>
