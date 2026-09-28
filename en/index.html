@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#393A3E">
+<meta name="theme-color" content="#050507">
 <meta name="robots" content="noindex, nofollow">  <!-- 討論用網址，正式網域上線前不給搜尋引擎收錄 -->
 <title>de nuit | One MICHELIN Star French Restaurant · Taipei</title>
 <meta name="description" content="de nuit — French for 'of the night'. It begins with the night: one MICHELIN star contemporary French in Da'an, Taipei, starred every year since 2021. Chef Kei Koo.">
@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.5">
-<link rel="stylesheet" href="../assets/css/v5.css?v=5.5">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.6">
+<link rel="stylesheet" href="../assets/css/v5.css?v=5.6">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "de nuit", "servesCuisine": "Contemporary French", "priceRange": "$$$$", "address": {"@type": "PostalAddress", "streetAddress": "No. 175, Sec. 4, Xinyi Rd., Da'an Dist.", "addressLocality": "Taipei", "addressCountry": "TW"}, "telephone": "+886-2-2700-1958", "email": "info@denuit.com.tw", "acceptsReservations": "https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:30", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "18:00", "closes": "22:30"}], "award": ["MICHELIN Guide Taiwan 2026, One Star", "MICHELIN One Star since 2021", "Tatler Best Taiwan Top 20 2024–2026"], "sameAs": ["https://www.instagram.com/denuit_taipei/", "https://www.facebook.com/denuitTaipei/"], "employee": {"@type": "Person", "name": "Kei Koo", "alternateName": "古俊基", "jobTitle": "Head Chef"}}</script>
 </head>
 <body class="home">
@@ -41,6 +41,7 @@
 </div>
 <main>
 <section class="hero">
+  <div class="veil" aria-hidden="true"></div>
   <h1 class="sr">de nuit | One MICHELIN Star French Restaurant · Taipei</h1>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.83 52.45" class="neon" role="img" aria-label="de nuit">
     <defs><filter id="neon-glow" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB">
@@ -65,19 +66,22 @@
 </section>
 <script>
 (() => {
-  const root = document.documentElement, KEY = 'dn-intro-seen';
-  let seen = false; try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
-  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { root.classList.add('intro-skip'); return; }
+  const root = document.documentElement;
+  const nav = (performance.getEntriesByType('navigation')[0] || {}).type;
+  let internal = false;
+  try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+  const skip = nav === 'back_forward' || (nav !== 'reload' && internal) || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (skip) { root.classList.add('intro-skip'); return; }
   root.classList.add('intro');
   const stop = e => e.preventDefault();
   const keys = e => { if ([' ', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) e.preventDefault(); };
   addEventListener('wheel', stop, { passive: false }); addEventListener('touchmove', stop, { passive: false }); addEventListener('keydown', keys);
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   scrollTo(0, 0);
   setTimeout(() => {
     root.classList.remove('intro'); root.classList.add('intro-done');
     removeEventListener('wheel', stop); removeEventListener('touchmove', stop); removeEventListener('keydown', keys);
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-  }, 5600);
+  }, 6000);   // 與 v5.css 的開場時間軸一致
 })();
 </script>
 <section class="mod reveal ">
@@ -141,8 +145,8 @@
   <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
   <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
   <p class="word">It begins with the night.</p>
-  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.5</span></p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.6</span></p>
 </footer>
-<script src="../assets/js/v5.js?v=5.5"></script>
+<script src="../assets/js/v5.js?v=5.6"></script>
 </body>
 </html>

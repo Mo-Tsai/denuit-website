@@ -5,7 +5,7 @@
    顏色讀 denuit_tokens.css；v5 另加更深的灰（見下），待網站定案再收進品牌規範。
    ═══════════════════════════════════════════════════════════════ */
 :root{
-  --deep:#393A3E;                  /* v5.5 主底：藍灰混色（深灰 #363535＋牆面灰藍 78BG 12/032＋午夜藍）｜待收進規範 */
+  --deep:#282B34;                  /* v5.6 主底：接近黑的藍灰（Mo：灰太淺、粉粉的，金色出不來）｜待收進規範 */
   --deep-line:rgba(252,252,252,.14);
   --col:34rem;                     /* 文字欄寬 */
   --img:30rem;                     /* 照片最大寬 */
@@ -49,32 +49,36 @@ body.menu-open{overflow:hidden}
 .overlay .meta{margin-top:7vh;font-size:12px;letter-spacing:.12em;line-height:2;opacity:.8}
 .overlay .close{position:absolute;top:max(14px,env(safe-area-inset-top));left:18px}
 
-/* ── 首頁開場：霓虹字標 → 一道光（鎖住畫面，看完才進首頁） ── */
+/* ── 首頁開場（v5.6）：全黑 → 霓虹在黑暗中點亮 → 黑褪成牆面 → 拉出一道光 → 標語、解鎖（6 秒，與 _build_v5.py 的 setTimeout 一致） ── */
 .hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;position:relative}
+.hero>*:not(.veil){position:relative;z-index:2}
+.veil{position:fixed;inset:0;z-index:1;background:#050507;opacity:0;pointer-events:none}   /* 夜：開場的全黑 */
 .neon{width:min(66vw,330px);height:auto;overflow:visible}
-.neon .tube{fill:var(--or);opacity:.12}                       /* 沒通電的燈管：看得到玻璃管，不發光 */
-.draw{width:0;height:1px;margin:6.5vh 0 4.5vh;background:var(--or);box-shadow:var(--light-line-shadow);opacity:0}   /* 拉線前不露光點 */
+.neon .tube{fill:var(--or);opacity:.07}                       /* 沒通電的燈管：黑暗裡只看得到一點玻璃管 */
+.draw{width:0;height:1px;margin:6.5vh 0 4.5vh;background:var(--or);box-shadow:var(--light-line-shadow);opacity:0}
 .hero .line{font-style:italic;font-size:20px;opacity:0}
 .hero .hint{position:absolute;bottom:calc(5vh + env(safe-area-inset-bottom,0px));font-size:10px;letter-spacing:.34em;text-transform:uppercase;opacity:0}
 
-/* 通電：7 段燈管由左到右，一段一段閃兩三下再亮穩 */
-.intro .neon .tube,.intro-done .neon .tube{animation:ignite 1.25s linear forwards;animation-delay:calc(.7s + var(--i) * .24s)}
+/* 0–3.2 秒：全黑裡，7 段燈管由左到右，一段一段閃兩三下再亮穩 */
+.intro .veil{opacity:1;animation:unveil 1.6s ease 3.2s forwards}
+@keyframes unveil{to{opacity:0}}
+.intro .neon .tube,.intro-done .neon .tube{animation:ignite 1.2s linear forwards;animation-delay:calc(.9s + var(--i) * .2s)}
 .t1{--i:0}.t2{--i:1}.t3{--i:2}.t4{--i:3}.t5{--i:4}.t6{--i:5}.t7{--i:6}
-@keyframes ignite{0%{opacity:.12}5%{opacity:.95}8%{opacity:.14}14%{opacity:.9}17%{opacity:.2}23%{opacity:.18}30%{opacity:1}100%{opacity:1}}
+@keyframes ignite{0%{opacity:.07}5%{opacity:.95}8%{opacity:.1}14%{opacity:.9}17%{opacity:.15}23%{opacity:.12}30%{opacity:1}100%{opacity:1}}
 /* 亮著的時候偶爾抖一下：霓虹的生命力 */
-.intro .neon,.intro-done .neon,.intro-skip .neon{animation:hum 7s linear 3.2s infinite}
+.intro .neon,.intro-done .neon,.intro-skip .neon{animation:hum 7s linear 3.6s infinite}
 @keyframes hum{0%,61%,64.5%,100%{opacity:1}62%{opacity:.82}63%{opacity:.97}64%{opacity:.88}}
-/* 亮完才拉出一道光，再出現標語 */
-.intro .draw,.intro-done .draw{animation:draw 2.2s var(--ease-line) 3.1s forwards}
+/* 3.2–4.8 秒黑褪成牆面；4.0 秒拉出一道光；5.2 秒標語；6 秒解鎖 */
+.intro .draw,.intro-done .draw{animation:draw 2s var(--ease-line) 4s forwards}
 @keyframes draw{0%{opacity:1;width:0}100%{opacity:1;width:min(46vw,420px)}}
-.intro .hero .line,.intro-done .hero .line{animation:fade 1.6s ease 4.9s forwards}
-.intro-done .hero .hint{animation:fade 1.2s ease .4s forwards}
+.intro .hero .line,.intro-done .hero .line{animation:fade 1.4s ease 5.2s forwards}
+.intro-done .hero .hint{animation:fade 1.2s ease .3s forwards}
 @keyframes fade{to{opacity:1}}
 /* 開場期間：頁首藏起來、不能捲 */
 .intro body{overflow:hidden;touch-action:none}
 .intro .top{opacity:0;pointer-events:none}
 .top{transition:opacity .9s,background .6s}
-/* 看過了（同一次瀏覽）或減少動態：直接是亮好的畫面 */
+/* 站內點回首頁、上一頁，或減少動態：直接是亮好的畫面 */
 .intro-skip .neon .tube{opacity:1}
 .intro-skip .draw{width:min(46vw,420px);opacity:1}
 .intro-skip .hero .line,.intro-skip .hero .hint{opacity:1}
