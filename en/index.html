@@ -17,14 +17,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.8">
-<link rel="stylesheet" href="../assets/css/v5.css?v=5.8">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.9">
+<link rel="stylesheet" href="../assets/css/v5.css?v=5.9">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "de nuit", "servesCuisine": "Contemporary French", "priceRange": "$$$$", "address": {"@type": "PostalAddress", "streetAddress": "No. 175, Sec. 4, Xinyi Rd., Da'an Dist.", "addressLocality": "Taipei", "addressCountry": "TW"}, "telephone": "+886-2-2700-1958", "email": "info@denuit.com.tw", "acceptsReservations": "https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:30", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "18:00", "closes": "22:30"}], "award": ["MICHELIN Guide Taiwan 2026, One Star", "MICHELIN One Star since 2021", "Tatler Best Taiwan Top 20 2024–2026"], "sameAs": ["https://www.instagram.com/denuit_taipei/", "https://www.facebook.com/denuitTaipei/"], "employee": {"@type": "Person", "name": "Kei Koo", "alternateName": "古俊基", "jobTitle": "Head Chef"}}</script>
 </head>
 <body class="home">
 <div class="progress" aria-hidden="true"></div>
+<audio id="bgm" src="../assets/audio/denuit_night.mp3" loop preload="none"></audio>
 <header class="top">
-  <button class="menu-btn" data-menu aria-expanded="false">Menu</button>
+  <div class="top-left">
+    <button class="menu-btn" data-menu aria-expanded="false">Menu</button>
+    <button class="sound-btn" data-sound aria-pressed="false" aria-label="Sound"><i></i><i></i><i></i></button>
+  </div>
   <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
   <a class="btn btn-s" href="reservation.html">Reserve</a>
 </header>
@@ -62,6 +66,7 @@
   </svg>
   <div class="draw" aria-hidden="true"></div>
   <p class="line">It begins with the night.</p>
+  <button class="sound-invite" data-sound aria-pressed="false">Sound on</button>
   <p class="hint" aria-hidden="true">Scroll</p>
 </section>
 <script>
@@ -146,8 +151,8 @@
   <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
   <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
   <p class="word">It begins with the night.</p>
-  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.8</span></p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.9</span></p>
 </footer>
-<script src="../assets/js/v5.js?v=5.8"></script>
+<script src="../assets/js/v5.js?v=5.9"></script>
 </body>
 </html>
