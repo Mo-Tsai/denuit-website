@@ -1,2 +1,5 @@
 preview.html
 _update*.tar.gz
+# 內部檔（產生器、預覽框、工具腳本）不上線
+_*
+__pycache__/

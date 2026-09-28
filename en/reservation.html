@@ -2,99 +2,72 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#393A3E">
 <title>Reservation | de nuit</title>
-<meta name="description" content="Reservations at de nuit: bookings open at 12:00 noon on the 1st of each month, online via inline only.">
-<link rel="alternate" hreflang="zh-Hant" href="../zh/reservation.html">
-<link rel="alternate" hreflang="en" href="../en/reservation.html">
-<link rel="alternate" hreflang="fr" href="../fr/reservation.html">
-<link rel="alternate" hreflang="ja" href="../ja/reservation.html">
-<link rel="alternate" hreflang="es" href="../es/reservation.html">
-<link rel="alternate" hreflang="x-default" href="../en/reservation.html">
+<meta name="description" content="Reserve at de nuit, for lunch or dinner: bookings open at 12:00 noon on the 1st of each month, online via inline only.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reservation | de nuit">
+<meta property="og:description" content="Reserve at de nuit, for lunch or dinner: bookings open at 12:00 noon on the 1st of each month, online via inline only.">
+<meta property="og:image" content="https://mo-tsai.github.io/denuit-website/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="apple-touch-icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.5">
+<link rel="stylesheet" href="../assets/css/v5.css?v=5.5">
 </head>
-<body>
-
-<header class="site-header">
-  <a class="brand" href="./"><img src="../assets/img/logo.png" alt="de nuit"></a>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="cuisine.html">Cuisine</a>
-    <a href="about.html">About</a>
-    <a href="journal.html">The Journal</a>
-    <a class="active" href="reservation.html">Reservation</a>
-  </nav>
-  <div class="head-right">
-    <div class="lang-switch" aria-label="Language">
-      <a href="../zh/reservation.html">ZH</a>
-      <a class="active" href="../en/reservation.html">EN</a>
-      <a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a>
-    </div>
-    <a class="nav-cta" href="reservation.html">Reserve</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+<body class="">
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <button class="menu-btn" data-menu aria-expanded="false">Menu</button>
+  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
+  <a class="btn btn-s" href="reservation.html">Reserve</a>
 </header>
-
-<div class="mobile-menu" aria-hidden="true">
-  <a href="cuisine.html">Cuisine</a>
-  <a href="about.html">About</a>
-  <a href="journal.html">The Journal</a>
-  <a href="reservation.html">Reservation</a>
-  <div class="lang-switch"><a href="../zh/reservation.html">ZH</a><a class="active" href="../en/reservation.html">EN</a><a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a></div>
+<div class="overlay" aria-hidden="true">
+  <button class="menu-btn close" data-menu>Close</button>
+  <nav>
+    <a href="index.html"><small>I</small>de nuit</a>
+    <a href="cuisine.html"><small>II</small>Signatures</a>
+    <a href="about.html"><small>III</small>Chef &amp; Team</a>
+    <a href="journal.html"><small>IV</small>Nuits</a>
+    <a href="reservation.html" aria-current="page"><small>V</small>Reserve</a>
+  </nav>
+  <p class="meta">175, Section 4, Xinyi Road<br>Da'an District, Taipei</p>
 </div>
-
-<section class="page-hero">
-  <div class="wrap">
-    <p class="kicker">Reservation</p>
-    <h1>Come at the blue hour</h1>
-
-    <ul class="notes reveal" style="margin-top:2.5em">
-      <li>Bookings open at 12:00 noon on the 1st of each month, for the current and following month</li>
-      <li>Reservations are accepted exclusively through inline below — no phone, DM or third-party bookings</li>
-      <li>Parties of 1–6; for more than six guests, write to <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a> two months ahead</li>
-      <li>Guests aged 12 and above · full dining notes in the booking system below</li>
-    </ul>
-
-    <div class="resv-window reveal">
-      <iframe src="https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ"
-              title="de nuit online reservations" loading="lazy"></iframe>
-    </div>
-  </div>
+<main>
+<section class="page-head">
+  <p class="label">Reservations</p>
+  <h1>Reserve</h1>
+  <p class="lede">Lunch and dinner. Bookings open at noon on the 1st of each month.</p>
+  <div class="ln" aria-hidden="true"></div>
 </section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Address</h3>
-        <p>175, Section 4, Xinyi Road, Da'an District, Taipei<br>3 min from MRT Xinyi Anhe, Exit 1</p>
-        <p><a href="https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h3>Hours</h3>
-        <p>Dinner · Tue — Sat 18:00 – 22:30<br>Lunch · Fri &amp; Sat 11:30 – 15:00<br>Closed Sunday &amp; Monday</p>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>Tel <a href="tel:+886227001958">+886 2 2700 1958</a><br><span style="font-size:.8em">phone service Tue — Sat, 15:00 – 17:30</span></p>
-        <p>Private dining &amp; events <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
-      </div>
-      <div>
-        <h3>Social · Language</h3>
-        <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br>
-           <a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
-        <p class="lang-switch" style="margin-top:1em"><a href="../zh/reservation.html">ZH</a> <a class="active" href="../en/reservation.html">EN</a> <a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a></p>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p class="footer-word">where the night begins</p>
-      <p>© 2026 de nuit</p>
-    </div>
-  </div>
+<section class="mod reveal ">
+  <p class="label">Hours</p>
+  <p>Lunch · Friday &amp; Saturday · <span class="nw">11:30 – 15:00</span><br>Dinner · Tuesday — Saturday · <span class="nw">18:00 – 22:30</span><br>Closed Sunday &amp; Monday</p>
+</section>
+<section class="mod reveal ">
+  <p class="label">Before you book</p>
+  <p>Reservations open at 12:00 noon on the 1st of each month, for the current and following month — lunch and dinner alike.</p>
+  <p>Reservations are accepted exclusively through inline below — no phone, DM or third-party bookings.</p>
+  <p>Parties of 1–6. For more than six guests, write to <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a> two months ahead.</p>
+  <p>Guests aged 12 and above. Full dining notes are in the booking system below.</p>
+</section>
+<section class="resv reveal">
+  <iframe src="https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ" title="de nuit online reservation" loading="lazy"></iframe>
+</section>
+</main>
+<footer class="site-foot">
+  <img class="mark" src="../assets/img/logo.png" alt="de nuit">
+  <p>175, Section 4, Xinyi Road<br>Da'an District, Taipei<br><a href="https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>Lunch · Friday &amp; Saturday · <span class="nw">11:30 – 15:00</span><br>Dinner · Tuesday — Saturday · <span class="nw">18:00 – 22:30</span><br>Closed Sunday &amp; Monday</p>
+  <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
+  <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
+  <p class="word">It begins with the night.</p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.5</span></p>
 </footer>
-
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/v5.js?v=5.5"></script>
 </body>
 </html>

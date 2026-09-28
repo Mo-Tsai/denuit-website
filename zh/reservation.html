@@ -1,102 +1,78 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reservation 訂位｜de nuit</title>
-<meta name="description" content="de nuit 訂位：每月 1 日中午 12:00 開放當月及次月訂位，僅接受 inline 線上訂位。">
+<title>訂位｜de nuit</title>
+<meta name="description" content="de nuit 線上訂位：午餐與晚餐，每月 1 日中午 12:00 開放當月及次月訂位，僅接受 inline 線上訂位。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="訂位｜de nuit">
+<meta property="og:description" content="de nuit 線上訂位：午餐與晚餐，每月 1 日中午 12:00 開放當月及次月訂位，僅接受 inline 線上訂位。">
+<meta property="og:image" content="https://mo-tsai.github.io/denuit-website/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" hreflang="zh-Hant" href="../zh/reservation.html">
 <link rel="alternate" hreflang="en" href="../en/reservation.html">
-<link rel="alternate" hreflang="fr" href="../fr/reservation.html">
-<link rel="alternate" hreflang="ja" href="../ja/reservation.html">
-<link rel="alternate" hreflang="es" href="../es/reservation.html">
 <link rel="alternate" hreflang="x-default" href="../en/reservation.html">
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="apple-touch-icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=4.3">
+<link rel="stylesheet" href="../assets/css/v4.css?v=4.3">
 </head>
-<body>
-
-<header class="site-header">
-  <a class="brand" href="./"><img src="../assets/img/logo.png" alt="de nuit"></a>
-  <nav class="site-nav" aria-label="主導航">
-    <a href="cuisine.html">Cuisine</a>
-    <a href="about.html">About</a>
-    <a href="journal.html">The Journal</a>
-    <a class="active" href="reservation.html">Reservation</a>
-  </nav>
-  <div class="head-right">
-    <div class="lang-switch" aria-label="語言切換">
-      <a class="active" href="../zh/reservation.html">ZH</a>
-      <a href="../en/reservation.html">EN</a>
-      <a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a>
-    </div>
-    <a class="nav-cta" href="reservation.html">訂位</a>
+<body class="">
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
+  <div class="top-right">
+    <p class="lang top-lang"><a class="active" href="../zh/reservation.html">ZH</a> <a href="../en/reservation.html">EN</a></p>
+    <button class="menu-btn" data-menu aria-expanded="false">目錄</button>
+    <a class="book" href="reservation.html">訂位</a>
   </div>
-  <button class="nav-burger" id="navBurger" aria-label="開啟選單" aria-expanded="false"><span></span><span></span></button>
 </header>
-
-<div class="mobile-menu" aria-hidden="true">
-  <a href="cuisine.html">Cuisine</a>
-  <a href="about.html">About</a>
-  <a href="journal.html">The Journal</a>
-  <a href="reservation.html">Reservation</a>
-  <div class="lang-switch"><a class="active" href="../zh/reservation.html">ZH</a><a href="../en/reservation.html">EN</a><a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a></div>
+<div class="overlay">
+  <button class="menu-btn close" data-menu>關閉</button>
+  <nav>
+    <a href="index.html"><small>I</small>de nuit</a>
+    <a href="cuisine.html"><small>II</small>典藏</a>
+    <a href="about.html"><small>III</small>主廚與團隊</a>
+    <a href="journal.html"><small>IV</small>Nuits・過去的夜晚</a>
+    <a href="reservation.html" aria-current="page"><small>V</small>訂位</a>
+  </nav>
+  <div class="meta"><p>台北市大安區信義路四段175號<br>捷運信義安和站 1 號出口・步行約 3 分鐘</p><p>午餐・週五、週六 <span class="nw">11:30 – 15:00</span><br>晚餐・週二至週六 <span class="nw">18:00 – 22:30</span><br>週日、週一公休</p><p class="lang"><a class="active" href="../zh/reservation.html">ZH</a> <a href="../en/reservation.html">EN</a></p></div>
 </div>
-
-<!-- ═══════════ 訂位規則＋訂位系統入口 ═══════════ -->
-<section class="page-hero">
-  <div class="wrap">
-    <p class="kicker">Reservation</p>
-    <h1>在暮色時分，赴一場夜的約</h1>
-
-    <ul class="notes reveal" style="margin-top:2.5em">
-      <li>每月 1 日中午 12:00，開放當月及次月訂位</li>
-      <li>僅接受下方 inline 線上訂位，不受理電話、私訊或第三方訂位</li>
-      <li>每組 1–6 位；逾 6 位之包場需求，請於兩個月前來信 <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></li>
-      <li>僅接待 12 歲以上賓客・完整用餐須知請見下方訂位系統</li>
-    </ul>
-
-    <div class="resv-window reveal">
-      <!-- inline 訂位系統（沿用既有嵌入；正式參數若有更新，改此處 src 即可） -->
-      <iframe src="https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ"
-              title="de nuit 線上訂位" loading="lazy"></iframe>
-    </div>
+<main>
+<section class="page-head">
+  <p class="kicker">Reservation</p>
+  <h1>訂位</h1>
+  <p class="lede">午餐與晚餐，每月 1 日中午 12:00 開放訂位。</p>
+</section>
+<section class="section">
+  <div class="reveal"><div class="services">
+    <article><p class="k">午餐</p><p class="days">週五・週六</p><p class="hrs"><span class="nw">11:30 – 15:00</span></p><p class="last">最後入座 12:15</p></article>
+    <article><p class="k">晚餐</p><p class="days">週二至週六</p><p class="hrs"><span class="nw">18:00 – 22:30</span></p><p class="last">最後入座 19:30</p></article>
+  </div>
+  <p class="closed">週日、週一公休</p>
+</div>
+  <ul class="rules-list prose reveal">
+    <li>每月 1 日中午 12:00，開放當月及次月訂位（午餐、晚餐相同）</li>
+    <li>僅接受下方 inline 線上訂位，不受理電話、私訊或第三方訂位</li>
+    <li>每組 1–6 位；逾 6 位之包場需求，請於兩個月前來信 <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></li>
+    <li>僅接待 12 歲以上賓客・完整用餐須知請見下方訂位系統</li>
+  </ul>
+  <div class="resv-window reveal">
+    <iframe src="https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ" title="de nuit 線上訂位" loading="lazy"></iframe>
   </div>
 </section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>地址</h3>
-        <p>台北市大安區信義路四段175號<br>捷運信義安和站 1 號出口・步行約 3 分鐘</p>
-        <p><a href="https://maps.google.com/?q=de+nuit+台北市大安區信義路四段175號" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h3>營業時間</h3>
-        <p>晚餐・週二至週六 18:00 – 22:30<br>午餐・週五、週六 11:30 – 15:00<br>週日、週一公休</p>
-      </div>
-      <div>
-        <h3>聯絡</h3>
-        <p>電話 <a href="tel:+886227001958">02-2700-1958</a><br><span style="font-size:.8em">電話服務時間・週二至週六 15:00 – 17:30</span></p>
-        <p>包廂與包場 <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
-      </div>
-      <div>
-        <h3>社群・語言</h3>
-        <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br>
-           <a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
-        <p class="lang-switch" style="margin-top:1em"><a class="active" href="../zh/reservation.html">ZH</a> <a href="../en/reservation.html">EN</a> <a href="../fr/reservation.html">FR</a><a href="../ja/reservation.html">JA</a><a href="../es/reservation.html">ES</a></p>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p class="footer-word">夜晚，於此開始</p>
-      <p>© 2026 de nuit</p>
-    </div>
-  </div>
+</main>
+<footer class="site-foot">
+  <div><h3>地址</h3><p>台北市大安區信義路四段175號<br>捷運信義安和站 1 號出口・步行約 3 分鐘</p><p><a href="https://maps.google.com/?q=de+nuit+台北市大安區信義路四段175號" target="_blank" rel="noopener">Google Maps ↗</a></p></div>
+  <div><h3>營業時間</h3><p>午餐・週五、週六 <span class="nw">11:30 – 15:00</span><br>晚餐・週二至週六 <span class="nw">18:00 – 22:30</span><br>週日、週一公休</p></div>
+  <div><h3>聯絡</h3><p>電話 <a href="tel:+886227001958">02-2700-1958</a><br>包廂與包場 <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p></div>
+  <div><h3>社群</h3><p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p></div>
+  <div class="base"><p class="word">我們從夜出發</p><p>© 2026 de nuit · v4.3</p></div>
 </footer>
-
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/v4.js?v=4.3"></script>
 </body>
 </html>

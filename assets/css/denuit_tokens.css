@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════════════════════
+   de nuit 品牌規範 v1.8 — 網站端唯一設定來源（2026-09-28）
+   對應：denuit_品牌規範.md 第五、六、十節
+   改這裡＝改規範：md／html／tokens.css／brand.py 四檔同步
+   網站使用的副本：site/assets/css/denuit_tokens.css（以本檔為準，改完複製過去）
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  /* ── 品牌色（第六節 6.1）灰為主、藍為輔、金只做光（灰約七成、藍約三成） ── */
+  /* 灰階：標準色最淺，只能往深加（v1.7） */
+  --gris-nuit:#727171;       /* 夜灰：標準色、最淺；印刷品的底（螢幕不當主底） */
+  --gris-2:#5F5E5E;          /* 中夜灰：深夜灰上的第二層色面（卡片、區塊） */
+  --gris-3:#4C4C4C;          /* 深夜灰：主軸，網站主底（2022 名片深炭灰） */
+  --minuit:#1C202D;          /* 午夜藍：輔色，漸層終點、頁尾 */
+  --or:#B98F60;              /* 字標金：2023 字標；一道光與細節（標籤、編號、細線） */
+  --or-dore:#C9A063;         /* 燙金：只是字標金的印刷做法，不是另一個顏色 */
+
+  /* 中性色：字與紙，不算品牌色 */
+  --blanc:#ECEEEB;
+  --papier:#FCFCFC;
+
+  /* 相容舊名 */
+  --nuit-profonde:var(--minuit);
+
+  /* 夜灰底上的字（6.1）：一律紙白，層次用字級分；金色小字、灰色副字讀不到 */
+  --on-gris:#FCFCFC;
+  --line-on-gris:rgba(252,252,252,.3);
+  /* 午夜藍底上的字 */
+  --text-bright:#ECEEEB;
+  --text:#CFD3D8;
+  --text-soft:#9AA1AA;
+  --line:rgba(255,255,255,.12);
+  /* 白底文字 */
+  --ink:#111111;
+  --ink-soft:#727171;
+  --line-light:#D7DADF;
+
+  /* ── 一道光（第六節 6.3） ── */
+  --or-soft:rgba(185,143,96,.6);
+  --or-glow:rgba(205,160,108,.55);
+  --light-line-shadow:0 0 10px 1px var(--or-glow),0 0 30px 2px rgba(205,160,108,.25);
+
+  /* ── 夜色漸層（第六節 6.2）0–70% 深夜灰、70–95% 沉到午夜藍；不綁時刻 ── */
+  --nuit-from:#4C4C4C;
+  --nuit-to:#1C202D;
+  --nuit-gradient:linear-gradient(180deg,#4C4C4C 0%,#4C4C4C 70%,#1C202D 95%,#1C202D 100%);
+  --or-line:rgba(185,143,96,.6);   /* 金細線：連結底線、分隔、按鈕細框 */
+
+  /* ── 字體（第五節）：英文只有一套、中文一套 ── */
+  --font-latin:"Bodoni Moda","Noto Serif TC",serif;   /* 暫代 Essonnes Display；拿到 Adobe Fonts 代碼後改成 "essonnes-display" */
+  --font-zh:"Noto Serif TC","Bodoni Moda",serif;      /* 思源宋體（印刷用 Adobe 明體） */
+  --font-display:var(--font-latin);  /* 相容舊名 */
+  --font-ui:var(--font-latin);
+  --font-body:var(--font-zh);
+  --w-screen:400;   /* Bodoni Moda 最細 400；中文 Light 300 */
+  --w-zh:300;
+  --w-print:400;    /* 全品牌不用 500 以上 */
+
+  /* ── 字級級數：16 × 1.25（字標 nuit÷de = 1.248） ── */
+  --fs-10:10.2px; --fs-13:12.8px; --fs-16:16px; --fs-20:20px; --fs-25:25px;
+  --fs-31:31px; --fs-39:39px; --fs-49:49px; --fs-61:61px; --fs-76:76px; --fs-95:95px;
+
+  /* ── 字距與行高（第五節 5.4） ── */
+  --ls-label:.4em;     /* 英文全大寫：.30–.45em */
+  --ls-title-zh:.2em;  /* 中文標題：.12–.30em */
+  --ls-body-zh:.03em;
+  --lh-body-zh:2;
+  --lh-body-en:1.7;
+  --lh-display:1.1;
+
+  /* ── 版面（第四節） ── */
+  --pad:6vw;               /* 左右邊界 ≥ 6% */
+  --offset-second-line:25.5%;  /* 錯位標題：第二行右移（字標 nuit 錯開 0.255） */
+
+  /* ── 動態（第十節） ── */
+  --ease-line:cubic-bezier(.65,0,.2,1);
+  --ease-reveal:cubic-bezier(.2,.7,.2,1);
+  --dur-line:2.6s;
+  --dur-reveal:1.4s;
+  --reveal-distance:28px;
+}

@@ -2,161 +2,132 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Journal | de nuit</title>
-<meta name="description" content="The Journal of de nuit: awards and recognition, events, collaborations, press and behind the scenes.">
-<link rel="alternate" hreflang="zh-Hant" href="../zh/journal.html">
-<link rel="alternate" hreflang="en" href="../en/journal.html">
-<link rel="alternate" hreflang="fr" href="../fr/journal.html">
-<link rel="alternate" hreflang="ja" href="../ja/journal.html">
-<link rel="alternate" hreflang="es" href="../es/journal.html">
-<link rel="alternate" hreflang="x-default" href="../en/journal.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#393A3E">
+<title>Nuits | de nuit</title>
+<meta name="description" content="Nights past at de nuit: MICHELIN, collaborations, events and behind the scenes.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nuits | de nuit">
+<meta property="og:description" content="Nights past at de nuit: MICHELIN, collaborations, events and behind the scenes.">
+<meta property="og:image" content="https://mo-tsai.github.io/denuit-website/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="apple-touch-icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.5">
+<link rel="stylesheet" href="../assets/css/v5.css?v=5.5">
 </head>
-<body>
-
-<header class="site-header">
-  <a class="brand" href="./"><img src="../assets/img/logo.png" alt="de nuit"></a>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="cuisine.html">Cuisine</a>
-    <a href="about.html">About</a>
-    <a class="active" href="journal.html">The Journal</a>
-    <a href="reservation.html">Reservation</a>
-  </nav>
-  <div class="head-right">
-    <div class="lang-switch" aria-label="Language">
-      <a href="../zh/journal.html">ZH</a>
-      <a class="active" href="../en/journal.html">EN</a>
-      <a href="../fr/journal.html">FR</a><a href="../ja/journal.html">JA</a><a href="../es/journal.html">ES</a>
-    </div>
-    <a class="nav-cta" href="reservation.html">Reserve</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+<body class="">
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <button class="menu-btn" data-menu aria-expanded="false">Menu</button>
+  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
+  <a class="btn btn-s" href="reservation.html">Reserve</a>
 </header>
-
-<div class="mobile-menu" aria-hidden="true">
-  <a href="cuisine.html">Cuisine</a>
-  <a href="about.html">About</a>
-  <a href="journal.html">The Journal</a>
-  <a href="reservation.html">Reservation</a>
-  <div class="lang-switch"><a href="../zh/journal.html">ZH</a><a class="active" href="../en/journal.html">EN</a><a href="../fr/journal.html">FR</a><a href="../ja/journal.html">JA</a><a href="../es/journal.html">ES</a></div>
+<div class="overlay" aria-hidden="true">
+  <button class="menu-btn close" data-menu>Close</button>
+  <nav>
+    <a href="index.html"><small>I</small>de nuit</a>
+    <a href="cuisine.html"><small>II</small>Signatures</a>
+    <a href="about.html"><small>III</small>Chef &amp; Team</a>
+    <a href="journal.html" aria-current="page"><small>IV</small>Nuits</a>
+    <a href="reservation.html"><small>V</small>Reserve</a>
+  </nav>
+  <p class="meta">175, Section 4, Xinyi Road<br>Da'an District, Taipei</p>
 </div>
-
-<section class="page-hero">
-  <div class="wrap">
-    <p class="kicker">The Journal</p>
-    <h1>The Journal</h1>
-
-    <div class="journal-tabs" role="tablist" aria-label="Categories">
-      <button class="active" data-cat="all">All</button>
-      <button data-cat="awards">Awards &amp; Recognition</button>
-      <button data-cat="events">Events</button>
-      <button data-cat="collaborations">Collaborations</button>
-      <button data-cat="press">Press</button>
-      <button data-cat="bts">Behind the Scenes</button>
-    </div>
-
-    <div class="journal-cat" data-cat="awards">
-      <h3>Awards &amp; Recognition</h3>
-      <div class="journal-list">
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：2025 米其林授獎現場照</p><p class="ph-src">assets/05-journal/awards</p></div>
-          <p class="jdate">2025</p>
-          <h4>A fifth consecutive star</h4>
-          <p>The MICHELIN Guide Taiwan 2025 — and, the same year, Tatler Taiwan Top 20 and the Best Service Award.</p>
-        </article>
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：2021 首度摘星紀念照</p><p class="ph-src">assets/05-journal/awards</p></div>
-          <p class="jdate">2021</p>
-          <h4>A first MICHELIN star</h4>
-          <p>The MICHELIN Guide Taipei &amp; Taichung 2021 — starred in its second year, and every year since.</p>
-        </article>
-      </div>
-    </div>
-
-    <div class="journal-cat" data-cat="events">
-      <h3>Events</h3>
-      <div class="journal-list">
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：活動／餐會現場照</p><p class="ph-src">assets/05-journal/events</p></div>
-          <p class="jdate">····</p>
-          <h4>[Placeholder: event title]</h4>
-          <p>[Placeholder: seasonal dinners and special evenings — text and images to come.]</p>
-        </article>
-      </div>
-    </div>
-
-    <div class="journal-cat" data-cat="collaborations">
-      <h3>Collaborations</h3>
-      <div class="journal-list">
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：聯名餐會或品牌合作現場照</p><p class="ph-src">assets/05-journal/collaborations</p></div>
-          <p class="jdate">····</p>
-          <h4>[Placeholder: collaboration title]</h4>
-          <p>[Placeholder: four-hands dinners and private events with international maisons — awaiting material.]</p>
-        </article>
-      </div>
-    </div>
-
-    <div class="journal-cat" data-cat="press">
-      <h3>Press</h3>
-      <div class="journal-list">
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：媒體刊登畫面或專訪照</p><p class="ph-src">assets/05-journal/press</p></div>
-          <p class="jdate">····</p>
-          <h4>[Placeholder: press title]</h4>
-          <p>[Placeholder: features and interviews, local and international — to be compiled.]</p>
-        </article>
-      </div>
-    </div>
-
-    <div class="journal-cat" data-cat="bts">
-      <h3>Behind the Scenes</h3>
-      <div class="journal-list">
-        <article class="jcard reveal">
-          <div class="ph"><p class="ph-need">此處需要：廚房日常／備料幕後照</p><p class="ph-src">assets/05-journal/behind-the-scenes</p></div>
-          <p class="jdate">2020</p>
-          <h4>de nuit is born</h4>
-          <p>In March, behind a quiet arcade on Xinyi Road, a restaurant named after the night lit its lamps.</p>
-        </article>
-      </div>
-    </div>
-
-  </div>
+<main>
+<section class="page-head">
+  <p class="label">Nuits</p>
+  <h1>Nuits</h1>
+  <p class="lede">Nights past: recognition, collaborations, events and behind the scenes.</p>
+  <div class="ln" aria-hidden="true"></div>
 </section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Address</h3>
-        <p>175, Section 4, Xinyi Road, Da'an District, Taipei<br>3 min from MRT Xinyi Anhe, Exit 1</p>
-      </div>
-      <div>
-        <h3>Hours</h3>
-        <p>Dinner · Tue — Sat 18:00 – 22:30<br>Lunch · Fri &amp; Sat 11:30 – 15:00<br>Closed Sunday &amp; Monday</p>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>Tel <a href="tel:+886227001958">+886 2 2700 1958</a><br>Private dining <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
-      </div>
-      <div>
-        <h3>Social · Language</h3>
-        <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br>
-           <a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
-        <p class="lang-switch" style="margin-top:1em"><a href="../zh/journal.html">ZH</a> <a class="active" href="../en/journal.html">EN</a> <a href="../fr/journal.html">FR</a><a href="../ja/journal.html">JA</a><a href="../es/journal.html">ES</a></p>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p class="footer-word">where the night begins</p>
-      <p>© 2026 de nuit</p>
-    </div>
-  </div>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2026-sola.jpg" alt="Sola × de nuit" loading="lazy"></figure>
+  <p class="sub">March 2026 · Collaboration</p>
+  <h2>Sola × de nuit</h2>
+  <p>For two nights, Chef Kosuke Nabeta of Sola in Paris came to Taipei to write one menu with Kei Koo.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2026-michelin.jpg" alt="A sixth consecutive star" loading="lazy"></figure>
+  <p class="sub">2026 · Recognition</p>
+  <h2>A sixth consecutive star</h2>
+  <p>The MICHELIN Guide Taiwan 2026 — and, the same year, Tatler Best Taiwan 2026 Top 20.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2026-ingredients.jpg" alt="Ingredients, in their season" loading="lazy"></figure>
+  <p class="sub">2026 · Behind the scenes</p>
+  <h2>Ingredients, in their season</h2>
+  <p>For Kei Koo, ingredients and seasons are never apart. Each season begins with what is best right now.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2025-dycteam.jpg" alt="DYCTEAM × de nuit" loading="lazy"></figure>
+  <p class="sub">Winter 2025 · Collaboration</p>
+  <h2>DYCTEAM × de nuit</h2>
+  <p>A starred collaboration between the design label DYCTEAM and de nuit.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/atmos-velvet.jpg" alt="de nuit × L'Atelier par Yao" loading="lazy"></figure>
+  <p class="sub">Autumn 2025 · Collaboration</p>
+  <h2>de nuit × L'Atelier par Yao</h2>
+  <p>Neo Brunch: Kei Koo joins Chef Yao at L'Atelier par Yao for an autumn brunch by daylight.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2025-tatler.jpg" alt="A fifth consecutive star" loading="lazy"></figure>
+  <p class="sub">2025 · Recognition</p>
+  <h2>A fifth consecutive star</h2>
+  <p>The MICHELIN Guide Taiwan 2025 — and, the same year, Tatler Taiwan Top 20 and the Best Service Award.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/atmos-monet-card.jpg" alt="Taiwan News: A taste of Monet" loading="lazy"></figure>
+  <p class="sub">December 2024 · Press</p>
+  <h2>Taiwan News: A taste of Monet</h2>
+  <p>A feature on the Monet-inspired autumn–winter menu.</p>
+  <p class="btns"><a class="btn" href="https://www.taiwannews.com.tw/news/5983848" target="_blank" rel="noopener">Read the article</a></p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2024-offmenu.jpg" alt="Tatler Off Menu, Macau" loading="lazy"></figure>
+  <p class="sub">2024 · Event</p>
+  <h2>Tatler Off Menu, Macau</h2>
+  <p>Kei Koo cooked for de nuit alongside fifteen starred chefs and bartenders from across Asia.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/atmos-wall-card.jpg" alt="de nuit × Silks House" loading="lazy"></figure>
+  <p class="sub">2024 · Collaboration</p>
+  <h2>de nuit × Silks House</h2>
+  <p>A one-day Tatler Dining Kitchen dinner. Kei Koo and Master Wu Hai-ming of Silks House, two Hong Kong roots, cooking between Cantonese and French.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/j-2023-kei.jpg" alt="Kei Koo takes the kitchen" loading="lazy"></figure>
+  <p class="sub">2023 · Behind the scenes</p>
+  <h2>Kei Koo takes the kitchen</h2>
+  <p>In April, Kei Koo became head chef, opening a new chapter of contemporary French at de nuit.</p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/atmos-velvet.jpg" alt="A first MICHELIN star" loading="lazy"></figure>
+  <p class="sub">2021 · Recognition</p>
+  <h2>A first MICHELIN star</h2>
+  <p>The MICHELIN Guide Taipei &amp; Taichung 2021 — starred in its second year, and every year since.</p>
+  <p class="btns"><a class="btn" href="https://guide.michelin.com/tw/zh_TW/taipei-region/taipei/restaurant/de-nuit" target="_blank" rel="noopener">MICHELIN Guide</a></p>
+</section>
+<section class="mod reveal night">
+  <figure><img src="../assets/img/atmos-wall-card.jpg" alt="de nuit begins" loading="lazy"></figure>
+  <p class="sub">2020 · Behind the scenes</p>
+  <h2>de nuit begins</h2>
+  <p>In March, behind a quiet arcade on Xinyi Road, a restaurant named for the night turned on its lights.</p>
+</section>
+</main>
+<footer class="site-foot">
+  <img class="mark" src="../assets/img/logo.png" alt="de nuit">
+  <p>175, Section 4, Xinyi Road<br>Da'an District, Taipei<br><a href="https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>Lunch · Friday &amp; Saturday · <span class="nw">11:30 – 15:00</span><br>Dinner · Tuesday — Saturday · <span class="nw">18:00 – 22:30</span><br>Closed Sunday &amp; Monday</p>
+  <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
+  <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
+  <p class="word">It begins with the night.</p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.5</span></p>
 </footer>
-
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/v5.js?v=5.5"></script>
 </body>
 </html>

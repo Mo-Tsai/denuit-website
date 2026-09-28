@@ -1,0 +1,292 @@
+/* ═══════════════════════════════════════════════════════════════
+   de nuit — site v4.3「從夜出發」（2026-09-28，品牌規範 v1.8）
+   v4.3：深夜灰 #4C4C4C 為主軸（0–70%）→ 午夜藍；金色拉細節：標籤、編號、日期、細線、訂位細框；色面用中夜灰
+   精品目錄型：入口（夜色漸層＋一道光）→ 長廊 → 宣言 → 典藏 → 章節 → 主廚 → Nuits → 訂位 → 獎項
+   顏色、字體、級數一律讀 denuit_tokens.css；這裡不寫新的色值
+   規則：只有灰、藍、金；金只做一道光與極小標籤（不做按鈕底、不做邊框）；中文不斜體
+   ═══════════════════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--nuit-gradient);color:var(--on-gris);min-height:100vh;
+  font-family:var(--font-zh);font-weight:400;font-size:var(--fs-16);line-height:var(--lh-body-zh);letter-spacing:var(--ls-body-zh);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+:lang(en) body{font-family:var(--font-latin);font-weight:var(--w-screen);line-height:var(--lh-body-en);letter-spacing:0}
+img{display:block;max-width:100%}
+.nw{white-space:nowrap}
+p,li,dd,.quote{text-wrap:pretty}   /* 避免最後一行只剩一個字 */
+h1,h2,h3{text-wrap:balance}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── 字的角色 ── */
+.kicker{font-family:var(--font-latin);font-weight:var(--w-screen);font-size:var(--fs-13);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--or);line-height:1}
+.arrow{font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--on-gris);padding-bottom:.7em;border-bottom:1px solid var(--or-line);transition:border-color .5s,color .5s}
+.arrow:hover{border-bottom-color:var(--or)}
+.btn{display:inline-block;font-family:var(--font-latin);font-size:var(--fs-13);letter-spacing:var(--ls-label);text-transform:uppercase;padding:1.3em 3.4em;border:1px solid var(--or-line);color:var(--on-gris);transition:border-color .6s,box-shadow .6s}
+.btn:hover{border-color:var(--or);box-shadow:0 0 14px -4px var(--or-glow)}
+.no{display:block;font-family:var(--font-latin);font-style:italic;font-size:var(--fs-20);color:var(--or);line-height:1;margin-bottom:1.1em}
+.fr{font-family:var(--font-latin);font-style:italic;font-size:var(--fs-16);color:var(--on-gris);line-height:1.5;margin-top:.5em}
+
+/* 標題：英文 Didone 斜體；中文思源宋體正體（規範 5.2） */
+h1,h2,h3{font-weight:var(--w-zh);color:var(--on-gris)}
+.display,.page-head h1,.manifesto h2,.sec-head h2,.chapitre h2,.chef h2,.nuits-rail h2,.reserve h2,.section h2{
+  font-family:var(--font-latin);font-style:italic;font-weight:var(--w-screen);line-height:var(--lh-display);letter-spacing:0;
+}
+:lang(zh) .page-head h1:not(.lat),:lang(zh) .manifesto h2,:lang(zh) .sec-head h2,:lang(zh) .chapitre h2,:lang(zh) .chef h2,:lang(zh) .nuits-rail h2,:lang(zh) .reserve h2,:lang(zh) .section h2{
+  font-family:var(--font-zh);font-style:normal;font-weight:var(--w-zh);letter-spacing:var(--ls-title-zh);line-height:1.5;
+}
+
+/* 錯位標題（規範 4.3） */
+.offset-title{display:inline-block;text-align:left}
+.offset-title span{display:block;white-space:nowrap}  /* 不換行：錯開量以第一行寬度計，第二行可以伸出去 */
+.offset-title .off{padding-left:var(--offset-second-line)}
+
+/* 淡入（規範 10） */
+.reveal{opacity:0;transform:translateY(var(--reveal-distance));transition:opacity var(--dur-reveal) ease,transform 1.6s var(--ease-reveal)}
+.reveal.in{opacity:1;transform:none}
+
+/* ── 一道光：捲動進度 ── */
+.progress{position:fixed;top:0;left:0;height:1px;width:100%;z-index:60;background:var(--or);box-shadow:var(--light-line-shadow);transform-origin:left;transform:scaleX(0)}
+
+/* ── 頁首 ── */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:2em;padding:24px var(--pad);transition:opacity .6s}
+.top .brand img{height:28px;transition:opacity .8s}
+body.home:not(.scrolled) .top .brand img{opacity:0}
+.top-right{display:flex;align-items:center;gap:2.4em}
+.lang{font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:.3em;color:var(--on-gris)}
+.lang a{padding:0 .25em;transition:color .4s}
+.lang a{opacity:.6}
+.lang a.active{opacity:1;color:var(--or)}
+.menu-btn,.book{font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--on-gris);background:none;border:none;cursor:pointer;padding:0 0 .6em;border-bottom:1px solid transparent;transition:border-color .5s}
+.book{border-bottom-color:var(--or-line)}
+.menu-btn:hover,.book:hover{border-bottom-color:var(--or)}
+
+/* ── 目錄（全螢幕 I–V） ── */
+.overlay{position:fixed;inset:0;z-index:55;background:var(--gris-3);display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad);opacity:0;pointer-events:none;transition:opacity .7s ease}
+body.menu-open .overlay{opacity:1;pointer-events:auto}
+body.menu-open{overflow:hidden}
+.overlay nav a{display:flex;align-items:baseline;gap:1.2em;font-size:clamp(var(--fs-31),4.4vw,var(--fs-61));letter-spacing:var(--ls-title-zh);color:var(--on-gris);line-height:1.7;opacity:.8;transition:opacity .4s}
+:lang(en) .overlay nav a{font-family:var(--font-latin);font-style:italic;letter-spacing:0}
+.overlay nav a:hover,.overlay nav a[aria-current]{opacity:1}
+.overlay nav a small{font-family:var(--font-latin);font-style:italic;font-size:var(--fs-16);color:var(--or);min-width:2.4em}
+.overlay .meta{margin-top:8vh;display:flex;flex-wrap:wrap;gap:1.5em 5vw;font-size:var(--fs-13);letter-spacing:.1em;color:var(--on-gris);line-height:2.1}
+.overlay .close{position:absolute;top:24px;right:var(--pad)}
+
+/* ═══ 首頁 ═══ */
+/* 1 入口：夜色漸層（規範 6.2）＋字標＋一道光 */
+.entrance{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:0 var(--pad)}
+.entrance .mark{width:clamp(180px,22vw,300px);opacity:0;animation:fade 2.2s ease .2s forwards}
+.draw{width:0;height:1px;margin:7vh 0 5vh;background:var(--or);box-shadow:var(--light-line-shadow);animation:draw var(--dur-line) var(--ease-line) 1.2s forwards}
+@keyframes draw{to{width:min(52vw,640px)}}
+.entrance .line{font-size:var(--fs-25);letter-spacing:.3em;color:var(--on-gris);opacity:0;animation:fade 2s ease 3.4s forwards}
+:lang(en) .entrance .line{font-family:var(--font-latin);font-style:italic;font-size:var(--fs-31);letter-spacing:0}
+.entrance .hint{position:absolute;bottom:5vh;font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:var(--ls-label);color:var(--on-gris);opacity:0;animation:fade 2s ease 4.6s forwards}
+@keyframes fade{to{opacity:1}}
+
+/* 2 長廊：唯一的縮放效果（規範 10） */
+.passage{height:220vh;position:relative}
+.passage .pin{position:sticky;top:0;height:100vh;overflow:hidden}
+.passage img{width:100%;height:100%;object-fit:cover;transform-origin:50% 62%;will-change:transform,filter;filter:brightness(.4)}
+.passage .ctext{position:absolute;left:0;right:0;bottom:14vh;text-align:center;opacity:0;padding:0 var(--pad)}
+.passage h2{font-size:var(--fs-39);letter-spacing:.3em;margin:.9em 0 .5em}
+:lang(en) .passage h2{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:var(--fs-49)}
+.passage .ctext p:last-child{color:var(--on-gris);letter-spacing:.12em}
+
+/* 3 宣言 */
+.manifesto{padding:24vh var(--pad) 22vh;max-width:1280px;margin:0 auto}
+.manifesto h2{font-size:clamp(var(--fs-39),6.2vw,var(--fs-76));margin:.9em 0 1.1em}
+:lang(en) .manifesto h2{font-size:clamp(var(--fs-49),7.4vw,var(--fs-95))}
+.manifesto .prose{margin-left:var(--offset-second-line);max-width:32em;font-size:var(--fs-20);color:var(--on-gris);letter-spacing:.08em}
+:lang(en) .manifesto .prose{letter-spacing:0}
+.manifesto .prose p+p{margin-top:1em;color:var(--on-gris)}
+
+/* 4 典藏精選：12 欄錯落（規範 4.2） */
+.sig-select{padding:10vh var(--pad) 18vh}
+.sec-head{margin-bottom:12vh}
+.sec-head h2{font-size:clamp(var(--fs-39),5.4vw,var(--fs-61));margin-top:.9em}
+:lang(en) .sec-head h2{font-size:clamp(var(--fs-49),6.4vw,var(--fs-76))}
+.sig-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 3vw;align-items:start}
+.sg figure{aspect-ratio:4/5;overflow:hidden;margin:0}
+.sg figure img{width:100%;height:100%;object-fit:cover;transition:transform 2.4s var(--ease-reveal)}
+.sg:hover figure img{transform:scale(1.03)}
+.sg .meta{padding-top:2em;max-width:26em}
+.sg h3{font-size:var(--fs-20);letter-spacing:.14em;line-height:1.6}
+:lang(en) .sg h3{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:var(--fs-25);line-height:1.3}
+.sg .meta p:last-child{margin-top:.9em;font-size:var(--fs-13);color:var(--on-gris)}
+.sg1{grid-column:1/7}
+.sg2{grid-column:8/13;margin-top:26vh}
+.sg3{grid-column:2/7;margin-top:10vh}
+.sg4{grid-column:8/13;margin-top:30vh}
+.sig-select .more{margin-top:14vh;text-align:center}
+
+/* 5 章節：中夜灰色面（深夜灰上的第二層）＋照片；頂邊一條金細線 */
+.chapitre{display:grid;grid-template-columns:5fr 7fr;min-height:88vh}
+.chapitre .field{background:var(--gris-2);border-top:1px solid var(--or-line);display:flex;flex-direction:column;justify-content:flex-end;padding:12vh 4vw 12vh var(--pad)}
+.chapitre figure{margin:0;overflow:hidden;min-height:60vh}
+.chapitre img{width:100%;height:100%;object-fit:cover;filter:brightness(.85)}
+.chapitre h2{font-size:clamp(var(--fs-31),3.6vw,var(--fs-49));margin:.9em 0 .6em}
+:lang(en) .chapitre h2{font-size:clamp(var(--fs-39),4.2vw,var(--fs-61))}
+.chapitre p{max-width:24em;margin-bottom:2.4em}
+.chapitre .arrow{align-self:flex-start}
+
+/* 6 主廚 */
+.chef{display:grid;grid-template-columns:repeat(12,1fr);gap:3vw;align-items:end;padding:22vh var(--pad)}
+.chef figure{grid-column:1/6;aspect-ratio:4/5;overflow:hidden;margin:0}
+.chef figure img{width:100%;height:100%;object-fit:cover;filter:brightness(.88)}
+.chef .meta{grid-column:7/12;padding-bottom:4vh}
+.chef h2{font-size:clamp(var(--fs-39),5vw,var(--fs-61));margin:.8em 0 .5em}
+.quote{font-size:var(--fs-25);letter-spacing:.1em;color:var(--on-gris);line-height:1.8}
+:lang(en) .quote{font-family:var(--font-latin);font-style:italic;letter-spacing:0;line-height:1.4}
+.cv{margin:2.2em 0 3em;font-size:var(--fs-13);letter-spacing:.14em;color:var(--on-gris);line-height:2.3}
+
+/* 7 Nuits */
+.nuits-rail{padding:16vh 0 18vh}
+.nuit-lead{flex:0 0 min(78vw,360px);scroll-snap-align:start;background:var(--gris-2);padding:2.6em 2.2em;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}  /* 中夜灰色面（規範 6.1 灰階第二層） */
+.nuit-lead h2{font-size:clamp(var(--fs-31),3.4vw,var(--fs-49));margin-top:.8em}
+.nuit-lead .arrow{align-self:flex-start}
+.rail{display:flex;gap:2.4vw;overflow-x:auto;padding:0 var(--pad) 2em;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:rgba(236,238,235,.2) transparent}
+.rail .nuit{flex:0 0 min(78vw,440px);scroll-snap-align:start}
+.nuit figure{aspect-ratio:16/10;overflow:hidden;margin:0 0 1.5em}
+.nuit img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:transform 1.6s var(--ease-reveal)}
+.nuit:hover img{transform:scale(1.04)}
+.nuit .d{font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:var(--ls-label);color:var(--or);line-height:1}
+.nuit .cat{font-size:var(--fs-10);letter-spacing:.3em;text-transform:uppercase;color:var(--on-gris);margin-left:1.2em}
+.nuit h3{font-size:var(--fs-20);letter-spacing:.08em;margin:.9em 0 .3em;line-height:1.5}
+.nuit p{color:var(--on-gris);font-size:var(--fs-13);line-height:1.95}
+.nuit .arrow{display:inline-block;margin-top:1.2em}
+
+/* 8 訂位：午餐、晚餐並列 */
+.reserve{padding:20vh var(--pad);text-align:center;border-top:1px solid var(--line-on-gris)}
+.reserve h2{font-size:clamp(var(--fs-39),5vw,var(--fs-61));margin:.8em 0 1.2em}
+.services{display:grid;grid-template-columns:1fr 1fr;max-width:760px;margin:0 auto;border-top:1px solid var(--or-line);border-bottom:1px solid var(--or-line)}
+.services article{padding:3em 1.5em}
+.services article+article{border-left:1px solid var(--line-on-gris)}
+.services .k{font-size:var(--fs-20);letter-spacing:.3em;color:var(--on-gris)}
+:lang(en) .services .k{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:var(--fs-25)}
+.services .days{margin-top:1.2em;font-size:var(--fs-13);letter-spacing:.14em;color:var(--on-gris)}
+.services .hrs{font-family:var(--font-latin);font-size:clamp(var(--fs-25),3vw,var(--fs-31));color:var(--on-gris);line-height:1.3;margin:.4em 0 .5em;font-variant-numeric:lining-nums}
+.services .last{font-size:var(--fs-13);color:var(--on-gris)}
+.closed{margin-top:1.4em;font-size:var(--fs-13);letter-spacing:.14em;color:var(--on-gris)}
+.reserve .rules{max-width:34em;margin:3.2em auto 3.6em;font-size:var(--fs-13);color:var(--on-gris)}
+
+/* 9 獎項：只出現一次（規範 7.1-9） */
+.credits{padding:16vh var(--pad) 18vh;text-align:center}
+.credits .ln{width:min(38vw,420px);height:1px;margin:0 auto 7vh;background:var(--or);box-shadow:var(--light-line-shadow)}
+.credits .award{font-family:var(--font-latin);font-size:var(--fs-13);letter-spacing:.24em;text-transform:uppercase;color:var(--on-gris);line-height:2}
+:lang(zh) .credits .award:first-of-type{font-family:var(--font-zh);text-transform:none;font-size:var(--fs-16);letter-spacing:.14em;color:var(--on-gris)}
+.credits .award+.award{margin-top:1em}
+
+/* ═══ 內頁 ═══ */
+.page-head{min-height:74vh;display:flex;flex-direction:column;justify-content:flex-end;padding:22vh var(--pad) 12vh;position:relative}
+.page-head::after{content:"";position:absolute;left:var(--pad);bottom:6vh;width:min(38vw,420px);height:1px;background:var(--or);box-shadow:var(--light-line-shadow);transform-origin:left;animation:grow var(--dur-line) var(--ease-line) .3s both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.page-head h1{font-size:clamp(var(--fs-61),8vw,var(--fs-95));margin:.5em 0 .35em}
+:lang(zh) .page-head h1:not(.lat){font-size:clamp(var(--fs-39),6.4vw,var(--fs-76));line-height:1.3}
+.page-head .lede{font-size:var(--fs-20);letter-spacing:.1em;max-width:30em;color:var(--on-gris)}
+:lang(en) .page-head .lede{letter-spacing:0}
+.section{padding:12vh var(--pad)}
+.section h2{font-size:clamp(var(--fs-31),4vw,var(--fs-49));margin:.8em 0 1.2em}
+.prose{max-width:34em}
+.prose p+p{margin-top:1.2em}
+
+/* 典藏 */
+.sig{display:grid;grid-template-columns:repeat(12,1fr);gap:3vw;align-items:center;padding:9vh var(--pad);border-top:1px solid var(--line-on-gris)}
+.sig figure{grid-column:1/6;aspect-ratio:4/5;overflow:hidden;margin:0}
+.sig figure img{width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+.sig .meta{grid-column:7/12}
+.sig:nth-of-type(even) figure{grid-column:8/13;order:2}
+.sig:nth-of-type(even) .meta{grid-column:2/7;order:1}
+.sig h3{font-size:clamp(var(--fs-20),2.2vw,var(--fs-25));letter-spacing:.14em;line-height:1.6}
+:lang(en) .sig h3{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:clamp(var(--fs-25),2.6vw,var(--fs-31));line-height:1.3}
+.sig .note{margin-top:1.4em;max-width:26em}
+.origins dl{max-width:640px}
+.origins .row{display:grid;grid-template-columns:1fr 1fr;gap:2em;padding:1em 0;border-bottom:1px solid var(--line-on-gris)}
+.origins dt{color:var(--on-gris)}
+.origins dd{color:var(--on-gris)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw;margin-top:2em}
+.menu-grid article{border-top:1px solid var(--or-line);padding-top:1.6em}
+.menu-grid h3{font-size:var(--fs-20);letter-spacing:.12em;margin-bottom:.6em}
+:lang(en) .menu-grid h3{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:var(--fs-25)}
+.menu-grid p{color:var(--on-gris);font-size:var(--fs-13)}
+.links{margin-top:6em;display:flex;flex-wrap:wrap;gap:1.6em 3em}
+
+/* 主廚與團隊 */
+.bio{display:grid;grid-template-columns:repeat(12,1fr);gap:3vw;align-items:end}
+.bio figure{grid-column:1/6;aspect-ratio:4/5;overflow:hidden;margin:0}
+.bio figure img{width:100%;height:100%;object-fit:cover;filter:brightness(.88)}
+.bio .prose{grid-column:7/13}
+.bio .quote{margin-bottom:1.4em}
+.team{display:grid;grid-template-columns:repeat(12,1fr);gap:2vw;margin-top:2em}
+.team figure{margin:0;overflow:hidden}
+.team figure img{width:100%;height:100%;object-fit:cover;filter:brightness(.88)}
+.team figure:nth-child(1){grid-column:1/8;aspect-ratio:3/2}
+.team figure:nth-child(2){grid-column:9/13;aspect-ratio:4/5;margin-top:14vh}
+.team figure:nth-child(3){grid-column:2/6;aspect-ratio:4/5;margin-top:-6vh}
+.team figure:nth-child(4){grid-column:7/13;aspect-ratio:3/2;margin-top:8vh}
+.space{display:grid;grid-template-columns:repeat(12,1fr);gap:3vw;align-items:center}
+.space figure{margin:0;overflow:hidden}
+.space figure img{width:100%;height:100%;object-fit:cover;filter:brightness(.88)}
+.space figure.a{grid-column:1/6;aspect-ratio:4/5}
+.space .prose{grid-column:7/12}
+.space figure.b{grid-column:4/13;aspect-ratio:3/2;margin-top:10vh}
+
+/* Nuits */
+.nuits-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4vw 3vw}
+.nuits-grid .nuit:nth-child(odd){grid-column:1/7}
+.nuits-grid .nuit:nth-child(even){grid-column:8/13;margin-top:12vh}
+
+/* 訂位頁 */
+.section .services{margin:0}   /* 訂位頁：與標題、規則同一條左邊線 */
+.section .services article:first-child{padding-left:0}
+.rules-list{margin:8vh 0 0;max-width:46em}
+.rules-list li{padding:1.1em 0;border-bottom:1px solid var(--line-on-gris)}
+.rules-list li:first-child{border-top:1px solid var(--line-on-gris)}
+.rules-list a{border-bottom:1px solid rgba(236,238,235,.28)}
+.resv-window{margin-top:8vh;border:1px solid var(--line-on-gris);background:var(--papier)}
+.resv-window iframe{display:block;width:100%;height:900px;border:0}
+
+/* ── 頁尾 ── */
+.site-foot{padding:10vh var(--pad) 12vh;border-top:1px solid var(--line-on-gris);display:grid;grid-template-columns:repeat(4,1fr);gap:2.4em;font-size:var(--fs-13);letter-spacing:.1em;color:var(--on-gris);line-height:2.2}
+.site-foot h3{font-family:var(--font-latin);font-size:var(--fs-10);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--or);margin-bottom:1.2em;line-height:1}
+.site-foot a:hover{color:var(--on-gris)}
+.site-foot .base{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;margin-top:6vh;padding-top:3vh;border-top:1px solid var(--line-on-gris)}
+.site-foot .word{font-size:var(--fs-16);letter-spacing:.3em;color:var(--on-gris)}
+:lang(en) .site-foot .word{font-family:var(--font-latin);font-style:italic;letter-spacing:0;font-size:var(--fs-20)}
+
+/* ── 手機 ── */
+@media (max-width:760px){
+  .top{padding:16px var(--pad)}
+  .lang.top-lang{display:none}
+  .top-right{gap:1.6em}
+  .manifesto{padding:16vh var(--pad)}
+  .manifesto .prose{margin-left:0;font-size:var(--fs-16)}
+  .sig-grid,.chef,.sig,.bio,.space,.team,.nuits-grid{display:block}
+  .sg{margin:0 0 9vh !important}
+  .sg:nth-child(even){margin-left:14vw !important}
+  .chef{padding:14vh var(--pad)}
+  .chef figure,.sig figure,.bio figure,.space figure,.team figure{margin-bottom:2em !important;margin-top:0 !important}
+  .sig .meta{text-align:left}
+  .chapitre{grid-template-columns:1fr}
+  .chapitre figure{order:-1;min-height:0;aspect-ratio:4/3}
+  .chapitre .field{padding:10vh var(--pad)}
+  .services{grid-template-columns:1fr}
+  .services article+article{border-left:none;border-top:1px solid var(--line-on-gris)}
+  .menu-grid{grid-template-columns:1fr}
+  .origins .row{grid-template-columns:1fr;gap:0}
+  .nuits-grid .nuit{margin:0 0 4em !important}
+  .nuit-lead{min-height:340px}
+  .site-foot{grid-template-columns:1fr 1fr}
+  .site-foot .base{flex-direction:column;gap:1em}
+  .resv-window iframe{height:760px}
+}
+/* 減少動態：全部直接顯示（規範 10） */
+@media (prefers-reduced-motion:reduce){
+  .reveal,.entrance .mark,.entrance .line,.entrance .hint{opacity:1;transform:none;animation:none;transition:none}
+  .draw{animation:none;width:min(52vw,640px)}
+  .page-head::after{animation:none}
+  .passage img{transform:none!important;filter:brightness(.6)!important}
+  .passage .ctext{opacity:1!important}
+}

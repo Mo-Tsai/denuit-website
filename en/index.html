@@ -2,150 +2,146 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#393A3E">
 <title>de nuit | One MICHELIN Star French Restaurant · Taipei</title>
-<meta name="description" content="de nuit — French for 'of the night'. One MICHELIN star contemporary French in Da'an, Taipei, starred every year since 2021. Chef Kei Koo.">
-<link rel="alternate" hreflang="zh-Hant" href="../zh/">
-<link rel="alternate" hreflang="en" href="../en/">
-<link rel="alternate" hreflang="fr" href="../fr/">
-<link rel="alternate" hreflang="ja" href="../ja/">
-<link rel="alternate" hreflang="es" href="../es/">
-<link rel="alternate" hreflang="x-default" href="../en/">
+<meta name="description" content="de nuit — French for 'of the night'. It begins with the night: one MICHELIN star contemporary French in Da'an, Taipei, starred every year since 2021. Chef Kei Koo.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="de nuit | One MICHELIN Star French Restaurant · Taipei">
+<meta property="og:description" content="de nuit — French for 'of the night'. It begins with the night: one MICHELIN star contemporary French in Da'an, Taipei, starred every year since 2021. Chef Kei Koo.">
+<meta property="og:image" content="https://mo-tsai.github.io/denuit-website/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/logo.png">
+<link rel="apple-touch-icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=5.5">
+<link rel="stylesheet" href="../assets/css/v5.css?v=5.5">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "de nuit", "servesCuisine": "Contemporary French", "priceRange": "$$$$", "address": {"@type": "PostalAddress", "streetAddress": "No. 175, Sec. 4, Xinyi Rd., Da'an Dist.", "addressLocality": "Taipei", "addressCountry": "TW"}, "telephone": "+886-2-2700-1958", "email": "info@denuit.com.tw", "acceptsReservations": "https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:30", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "18:00", "closes": "22:30"}], "award": ["MICHELIN Guide Taiwan 2026, One Star", "MICHELIN One Star since 2021", "Tatler Best Taiwan Top 20 2024–2026"], "sameAs": ["https://www.instagram.com/denuit_taipei/", "https://www.facebook.com/denuitTaipei/"], "employee": {"@type": "Person", "name": "Kei Koo", "alternateName": "古俊基", "jobTitle": "Head Chef"}}</script>
 </head>
-<body>
-
-<header class="site-header">
-  <a class="brand" href="./"><img src="../assets/img/logo.png" alt="de nuit"></a>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="cuisine.html">Cuisine</a>
-    <a href="about.html">About</a>
-    <a href="journal.html">The Journal</a>
-    <a href="reservation.html">Reservation</a>
-  </nav>
-  <div class="head-right">
-    <div class="lang-switch" aria-label="Language">
-      <a href="../zh/">ZH</a>
-      <a class="active" href="../en/">EN</a>
-      <a href="../fr/">FR</a><a href="../ja/">JA</a><a href="../es/">ES</a>
-    </div>
-    <a class="nav-cta" href="reservation.html">Reserve</a>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+<body class="home">
+<div class="progress" aria-hidden="true"></div>
+<header class="top">
+  <button class="menu-btn" data-menu aria-expanded="false">Menu</button>
+  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
+  <a class="btn btn-s" href="reservation.html">Reserve</a>
 </header>
-
-<div class="mobile-menu" aria-hidden="true">
-  <a href="cuisine.html">Cuisine</a>
-  <a href="about.html">About</a>
-  <a href="journal.html">The Journal</a>
-  <a href="reservation.html">Reservation</a>
-  <div class="lang-switch"><a href="../zh/">ZH</a><a class="active" href="../en/">EN</a><a href="../fr/">FR</a><a href="../ja/">JA</a><a href="../es/">ES</a></div>
+<div class="overlay" aria-hidden="true">
+  <button class="menu-btn close" data-menu>Close</button>
+  <nav>
+    <a href="index.html" aria-current="page"><small>I</small>de nuit</a>
+    <a href="cuisine.html"><small>II</small>Signatures</a>
+    <a href="about.html"><small>III</small>Chef &amp; Team</a>
+    <a href="journal.html"><small>IV</small>Nuits</a>
+    <a href="reservation.html"><small>V</small>Reserve</a>
+  </nav>
+  <p class="meta">175, Section 4, Xinyi Road<br>Da'an District, Taipei</p>
 </div>
-
-<!-- Hero | Plan A: full-bleed night image + poem lower-left.
-     Alternates: hero-02.jpg / hero-03.jpg. Plan C: swap <img> for <video class="hero-img">. -->
+<main>
 <section class="hero">
-  <div class="hero-media">
-    <img class="hero-img" src="../assets/img/hero-01.jpg" alt="Signature dish of de nuit">
-  </div>
-  <div class="hero-caption">
-    <p class="hero-wordmark">de nuit · Taipei</p>
-    <h1 class="hero-line">A fairy tale for grown-ups —<br>where the night begins.</h1>
-    <div class="hero-actions"><a class="btn" href="reservation.html">Reserve</a></div>
-  </div>
-  <p class="hero-scroll">Scroll</p>
+  <h1 class="sr">de nuit | One MICHELIN Star French Restaurant · Taipei</h1>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.83 52.45" class="neon" role="img" aria-label="de nuit">
+    <defs><filter id="neon-glow" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="far"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.6" result="near"/>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 .32  0 1 0 0 .27  0 0 1 0 .2  0 0 0 1 0" result="core"/>
+      <feMerge><feMergeNode in="far"/><feMergeNode in="far"/><feMergeNode in="near"/><feMergeNode in="core"/></feMerge>
+    </filter></defs>
+    <g filter="url(#neon-glow)">
+    <path class="tube t1" d="M8.18 32.22C6.5 32.45 5 32.08 3.83 31.14C2.44 30.02 2 28.22 2.62 26.21C3.37 23.75 5.82 20.96 9.06 20.37C12.91 19.66 14.67 22.47 14.74 22.59C15.07 23.14 14.88 23.88 14.31 24.24C13.73 24.61 13 24.46 12.67 23.91C12.64 23.86 11.61 22.3 9.34 22.71C7.13 23.11 5.4 25.1 4.9 26.77C4.66 27.53 4.56 28.57 5.4 29.25C6.13 29.84 7.12 30.04 8.26 29.82C11.14 29.27 14.55 26.28 17.63 21.62C18 21.05 18.74 20.86 19.29 21.2C19.83 21.53 19.97 22.27 19.6 22.83C16.08 28.16 12.16 31.47 8.56 32.16C8.44 32.18 8.31 32.2 8.18 32.22Z" fill="#B98F60"/>
+    <path class="tube t2" d="M21.39 9.04C21.24 7.91 20.7 4.87 19.21 6.75C18.44 7.72 18.01 9.06 17.74 10.22C17.09 12.99 17.31 15.89 17.85 18.58C17.98 19.25 18.15 20.06 18.39 20.9C20.52 17.24 21.89 12.96 21.39 9.04ZM15.01 18.9C14.49 15.19 14.71 12.8 15.54 9.81C16.17 7.51 18.78 2 21.99 3.72C23.53 4.54 23.78 7.13 23.87 8.72C23.99 10.6 23.74 12.49 23.28 14.35C22.51 17.52 21.11 20.59 19.27 23.36C20.31 25.57 21.96 27.16 24.65 25.76C27.11 24.47 29.16 22.08 30.74 19.84C31.79 18.35 33.37 19.66 32.34 21.12C29.98 24.46 25.08 30.1 20.56 28.76C19.13 28.34 18.21 27.22 17.4 25.9C16.26 24.03 15.33 21.2 15.01 18.9Z" fill="#B98F60"/>
+    <path class="tube t3" d="M28.12 23.01C28.12 23.01 29.93 20.95 30.27 20.49C30.74 19.84 31.13 19.12 30.45 18.65C29.92 18.28 28.85 18.95 28.5 19.78C27.93 21.13 28.04 22.43 28.12 23.01ZM26.14 19.85C26.81 18.21 28.2 16.59 29.98 16.18C31.64 15.79 33.16 16.78 33.18 18.49C33.22 21.26 30.59 23.05 28.12 23.01C28.51 24.88 29.89 26.2 31.98 26.14C36.34 26.01 40.78 22.31 42.64 18.46C43.36 16.97 45.5 17.39 44.68 19.09C43.03 22.5 40.09 25.32 36.75 27.08C34.45 28.29 31.4 29.32 28.94 28.41C26.44 27.48 25.38 24.78 25.6 22.16C25.6 22.16 25.73 20.89 26.14 19.85Z" fill="#B98F60"/>
+    <path class="tube t4" d="M64.57 37.56C62.64 40.88 59.97 44.32 57.01 46.87C53.86 49.57 49.53 50.1 46.58 48.13C44.96 47.04 44.16 45.32 43.75 43.38C43.51 42.26 43.4 41.1 43.23 39.96C43.11 39.17 43.01 37.05 42.24 36.64C41.41 36.2 39.84 38.16 39.25 38.79C38.37 39.73 37.6 40.75 36.91 41.81C35.5 43.99 34.55 46.35 33.95 48.75C33.78 49.43 33.04 50.02 32.39 50.21C31.73 50.45 31.07 50.28 31.15 49.36C31.43 46.4 31.39 43.42 31.07 40.56C30.93 39.27 33.47 37.79 33.64 39.37C33.77 40.57 33.85 41.78 33.88 43.01C34.87 41.16 36.09 39.4 37.54 37.78C38.71 36.47 40.36 34.69 42.01 34.07C43.65 33.46 44.66 34.45 45.13 35.78C46.28 38.99 45.47 43.49 48.34 45.67C50.8 47.54 54.28 46.92 56.77 44.44C59.03 42.19 61.08 39.54 62.66 36.83C63.53 35.32 65.56 35.86 64.57 37.56Z" fill="#B98F60"/>
+    <path class="tube t5" d="M85.86 35.69C83.79 38.9 81.18 42.68 77.78 44.64C75.94 45.7 73.88 45.86 72.84 44.19C72.05 42.9 71.64 41.27 71.49 39.61C70.66 40.59 69.78 41.54 68.86 42.44C67.41 43.85 65.54 45.81 63.51 46.06C59.25 46.57 61.05 39.53 62.36 37.19C62.7 36.58 63.35 35.89 64.09 35.95C64.71 35.99 64.98 36.67 64.65 37.26C63.96 38.5 63.51 39.81 63.44 41.13C63.36 42.54 63.71 44.18 65.43 42.92C67.86 41.15 70 38.52 71.75 36.12C72.23 35.46 74.04 34.57 73.99 35.89C73.92 37.86 74.15 39.75 74.84 41.48C75.16 42.29 75.58 43.13 76.68 42.84C77.53 42.62 78.27 41.88 78.89 41.27C80.9 39.32 82.46 37.27 83.95 34.96C84.89 33.49 86.93 34.02 85.86 35.69Z" fill="#B98F60"/>
+    <path class="tube t6" d="M84.84 29.71C85.08 28.78 85.32 27.84 85.55 26.9C85.89 25.55 88.54 24.8 88.1 26.54C87.87 27.47 87.63 28.41 87.4 29.35C87.06 30.7 84.41 31.45 84.84 29.71ZM99.65 34.02C97.57 38.27 93.27 44.78 88.02 45.07C83.51 45.31 82.74 39.07 83.64 35.49C83.97 34.14 86.58 33.16 86.15 34.91C85.57 37.25 85.78 42.65 88.96 42.51C90.51 42.45 92.05 41.17 93.17 40.05C94.94 38.27 96.28 36.14 97.36 33.94C98.03 32.56 100.51 32.26 99.65 34.02Z" fill="#B98F60"/>
+    <path class="tube t7" d="M114.49 32.8C112.41 36.5 109.78 40.13 106.41 42.88C104.34 44.57 101.03 46.4 99.15 44.37C98.06 43.2 97.81 41.17 97.58 39.56C97.22 37.03 97.28 34.33 97.36 31.7C97.43 29.37 97.61 27.03 97.89 24.69C97.01 24.61 96.14 24.5 95.28 24.34C93.72 24.05 95.18 21.54 96.44 21.77C97.04 21.88 97.64 21.97 98.24 22.04C98.55 20.01 98.93 17.98 99.38 15.96C99.68 14.59 102.29 13.62 101.89 15.38C101.39 17.65 100.97 19.94 100.64 22.21C103.64 22.29 106.7 21.87 109.78 20.95C111.53 20.42 110.58 23.04 109.24 23.45C106.26 24.34 103.26 24.79 100.33 24.79C100.18 26.15 100.07 27.51 100 28.86C99.79 32.85 99.58 37.15 100.69 40.81C100.97 41.73 101.37 42.8 102.56 42.71C103.58 42.63 104.69 41.77 105.5 41.11C108.26 38.86 110.5 35.76 112.2 32.73C112.54 32.12 113.19 31.43 113.93 31.48C114.55 31.53 114.83 32.2 114.49 32.8Z" fill="#B98F60"/>
+    </g>
+  </svg>
+  <div class="draw" aria-hidden="true"></div>
+  <p class="line">It begins with the night.</p>
+  <p class="hint" aria-hidden="true">Scroll</p>
 </section>
-
-<div class="awards-band reveal">
-  <p><span class="star">✶</span>&nbsp;&nbsp;One MICHELIN Star 2021 — 2025&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Tatler Taiwan Top 20 · Best Service 2025</p>
-</div>
-
-<section class="statement">
-  <div class="wrap reveal">
-    <p class="kicker">de nuit · French for “of the night”</p>
-    <p>A true dinner deserves a world entirely separate from the day.</p>
-    <figure class="photo portrait st-img"><img src="../assets/img/cuisine-04.jpg" alt="Signature dish of de nuit" loading="lazy"></figure>
-  </div>
+<script>
+(() => {
+  const root = document.documentElement, KEY = 'dn-intro-seen';
+  let seen = false; try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { root.classList.add('intro-skip'); return; }
+  root.classList.add('intro');
+  const stop = e => e.preventDefault();
+  const keys = e => { if ([' ', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) e.preventDefault(); };
+  addEventListener('wheel', stop, { passive: false }); addEventListener('touchmove', stop, { passive: false }); addEventListener('keydown', keys);
+  scrollTo(0, 0);
+  setTimeout(() => {
+    root.classList.remove('intro'); root.classList.add('intro-done');
+    removeEventListener('wheel', stop); removeEventListener('touchmove', stop); removeEventListener('keydown', keys);
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+  }, 5600);
+})();
+</script>
+<section class="mod reveal ">
+  <p class="label">About</p>
+  <p>de nuit — French for “of the night”. Behind a corridor on Xinyi Road in Taipei, a room set apart from the day.</p>
+  <p>Hong Kong-born chef Kei Koo writes Taiwan’s seasons in a French structure.</p>
 </section>
-
-<section class="chapter">
-  <figure class="photo"><img src="../assets/img/cuisine-08.jpg" alt="Signature dish of de nuit" loading="lazy"></figure>
-  <div class="cap">
-    <p class="kicker">Chapitre I · Cuisine</p>
-    <h2>The cuisine is the heart of the tale</h2>
-  </div>
+<section class="mod reveal photo-only">
+  <figure><img src="../assets/img/space-03-corridor.jpg" alt="The corridor off Xinyi Road" loading="lazy"></figure>
 </section>
-<div class="passage">
-  <div class="wrap reveal">
-    <div class="txt">
-      <p class="lede">Like a storybook, the pages here do not change with the seasons.</p>
-      <p class="prose">Eight- and ten-course menus write a dialogue between French tradition and the seasons — only the signatures stay on these pages.</p>
-      <a class="arrow-link" href="cuisine.html">Enter the cuisine</a>
-    </div>
-  </div>
-</div>
-
-<section class="chapter">
-  <figure class="photo"><img src="../assets/img/team-01.jpg" alt="The chef and team of de nuit" loading="lazy"></figure>
-  <div class="cap">
-    <p class="kicker">Chapitre II · Chef &amp; Team</p>
-    <h2>Chef Kei Koo</h2>
-  </div>
+<section class="mod reveal ">
+  <figure><img src="../assets/img/sig-02.jpg" alt="Quail / Morel / Vin jaune" loading="lazy"></figure>
+  <p class="label">Signatures</p>
+  <p class="num">I</p>
+  <h2>Quail / Morel / Vin&nbsp;jaune</h2>
+  <p>Quail from Xikou, Chiayi. A Kei Koo classic.</p>
+  <p class="btns"><a class="btn" href="cuisine.html">View signatures</a></p>
 </section>
-<div class="passage alt">
-  <div class="wrap reveal">
-    <div class="txt">
-      <p class="lede">“Clean and pure — yet layered.”</p>
-      <p class="prose">Born in Hong Kong, his craft built on French ground — at the helm of de nuit since 2023. Seasonal ingredients, sauces of quiet depth, and a lightness that never raises its voice.</p>
-      <a class="arrow-link" href="about.html">Meet the team</a>
-    </div>
-  </div>
-</div>
-
-<section class="resv-invite">
-  <div class="wrap reveal">
-    <p class="kicker" style="text-align:center">Reservation</p>
-    <h2>Come at the blue hour</h2>
-    <div class="prose">
-      <p>Bookings open at 12:00 noon on the 1st of each month, for the current and following month.<br>Online via inline only; parties of 1–6, guests aged 12 and above.</p>
-    </div>
-    <a class="btn solid" href="reservation.html">Reserve a table</a>
-  </div>
+<section class="mod reveal ">
+  <p class="label">Chapitre</p>
+  <h2>Each season, a chapter</h2>
+  <p>Some dishes belong to a single season. New work appears first on Instagram.</p>
+  <p class="btns"><a class="btn" href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a></p>
 </section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Address</h3>
-        <p>175, Section 4, Xinyi Road, Da'an District, Taipei<br>3 min from MRT Xinyi Anhe, Exit 1</p>
-        <p><a href="https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei" target="_blank" rel="noopener">Google Maps ↗</a></p>
-      </div>
-      <div>
-        <h3>Hours</h3>
-        <p>Dinner · Tue — Sat 18:00 – 22:30<br>Lunch · Fri &amp; Sat 11:30 – 15:00<br>Closed Sunday &amp; Monday</p>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>Tel <a href="tel:+886227001958">+886 2 2700 1958</a><br>Private dining <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
-      </div>
-      <div>
-        <h3>Social · Language</h3>
-        <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br>
-           <a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
-        <p class="lang-switch" style="margin-top:1.4em"><a href="../zh/">ZH</a> <a class="active" href="../en/">EN</a> <a href="../fr/">FR</a><a href="../ja/">JA</a><a href="../es/">ES</a></p>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p class="footer-word">where the night begins</p>
-      <p>© 2026 de nuit</p>
-    </div>
-  </div>
+<section class="mod reveal ">
+  <figure><img src="../assets/img/hero-03.jpg" alt="Chef Kei Koo" loading="lazy"></figure>
+  <p class="label">Chef</p>
+  <h2>Kei Koo</h2>
+  <p>Light, unshowy — let the ingredients speak.</p>
+  <p class="btns"><a class="btn" href="about.html">Chef &amp; team</a></p>
+</section>
+<section class="mod reveal ">
+  <p class="label">Menu</p>
+  <p>Dinner is served Tuesday to Saturday, <span class="nw">18:00 – 22:30</span>, in eight or ten courses. Lunch is served on Friday and Saturday, <span class="nw">11:30 – 15:00</span>.</p>
+  <p>A sommelier’s pairing and a non-alcoholic pairing are offered.</p>
+</section>
+<section class="mod reveal ">
+  <figure><img src="../assets/img/j-2026-sola.jpg" alt="Sola × de nuit" loading="lazy"></figure>
+  <p class="label">Nuits</p>
+  <p class="sub">March 2026</p>
+  <h2>Sola × de nuit</h2>
+  <p>For two nights, Chef Kosuke Nabeta of Sola in Paris came to Taipei to write one menu with Kei Koo.</p>
+  <p class="btns"><a class="btn" href="journal.html">All nights</a></p>
+</section>
+<section class="mod reveal ">
+  <p class="label">Reservations</p>
+  <p>Reservations open at 12:00 noon on the 1st of each month, for the current and following month, and are taken online only.</p>
+  <p>Tables for one to six guests, aged 12 and above. For larger parties and private dining, please write to <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a> two months ahead.</p>
+  <p class="btns"><a class="btn" href="reservation.html">Book a table</a><a class="btn" href="mailto:info@denuit.com.tw">Private dining</a></p>
+</section>
+<section class="awards reveal">
+  <div class="ln" aria-hidden="true"></div>
+  <p><span class="dn">de nuit</span> — One Star<br><span class="nw">MICHELIN Guide Taiwan 2026</span><br>Starred every year since 2021</p>
+  <p><span class="nw">Tatler Best Taiwan Top 20</span><br><span class="nw">2024 — 2026</span></p>
+</section>
+</main>
+<footer class="site-foot">
+  <img class="mark" src="../assets/img/logo.png" alt="de nuit">
+  <p>175, Section 4, Xinyi Road<br>Da'an District, Taipei<br><a href="https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>Lunch · Friday &amp; Saturday · <span class="nw">11:30 – 15:00</span><br>Dinner · Tuesday — Saturday · <span class="nw">18:00 – 22:30</span><br>Closed Sunday &amp; Monday</p>
+  <p><a href="tel:+886227001958">+886 2 2700 1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
+  <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
+  <p class="word">It begins with the night.</p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v5.5</span></p>
 </footer>
-
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/v5.js?v=5.5"></script>
 </body>
 </html>
