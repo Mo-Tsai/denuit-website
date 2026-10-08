@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mo-tsai.github.io/denuit-website/sitemap.xml
+Sitemap: https://www.denuit.com.tw/sitemap.xml
