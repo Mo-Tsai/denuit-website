@@ -15,7 +15,7 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 /* 背景＝藝術漆牆（v5.1）：灰藍斑駁＋霧面顆粒（_make_wall.py 生成，牆色 78BG 12/032），從頁首到頁尾一路對調：深灰 86%／午夜藍 14%（灰藍）→ 深灰 14%／午夜藍 86%（藍灰）（v5.3：灰到藍是整個捲動，不是只有最後一頁；v5.4 頁尾更藍；v5.5 一開始就是藍灰混色、紋理對比壓低）；不再用純色 */
 body,.wall{background:linear-gradient(180deg,rgba(28,32,45,.14) 0%,rgba(28,32,45,.86) 100%) no-repeat 0 0/100% 100%,url(../img/wall-texture.jpg) repeat 0 0/512px 512px,var(--deep)}
-body{color:var(--papier);font-family:var(--font-latin);font-weight:400;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{color:var(--text-bright);font-family:var(--font-latin);font-weight:400;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -27,7 +27,7 @@ p,h1,h2{text-wrap:balance}
 .progress{position:fixed;top:0;left:0;height:1px;width:100%;z-index:60;background:var(--or);box-shadow:var(--light-line-shadow);transform-origin:left;transform:scaleX(0)}
 
 /* ── 按鈕：1 px 金細框、小大寫（金色拉細節） ── */
-.btn{display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;line-height:1;padding:1.15em 1.5em 1.05em;border:1px solid var(--or-line);color:var(--papier);transition:border-color .5s,box-shadow .5s}
+.btn{display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;line-height:1;padding:1.15em 1.5em 1.05em;border:1px solid var(--or-line);color:var(--text-bright);transition:border-color .5s,box-shadow .5s}
 .btn:hover{border-color:var(--or);box-shadow:0 0 14px -4px var(--or-glow)}
 .btn-s{font-size:10px;padding:1em 1.2em .9em}
 
@@ -38,7 +38,7 @@ body.scrolled .top{background:rgba(44,44,48,.72);-webkit-backdrop-filter:blur(14
 .top .brand img{height:24px;transition:opacity .8s}
 body.home:not(.scrolled) .top .brand img{opacity:0}
 .top-left{justify-self:start;display:flex;align-items:center;gap:16px}
-.menu-btn{background:none;border:none;cursor:pointer;color:var(--papier);font-family:var(--font-latin);font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:1em 0}
+.menu-btn{background:none;border:none;cursor:pointer;color:var(--text-bright);font-family:var(--font-latin);font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:1em 0}
 
 /* ── 聲音（v5.9）：配樂取自 ON 曲庫 A14 和弦版（Suno Pro），客人按了才播 ── */
 .sound-btn{display:flex;align-items:flex-end;gap:3px;height:14px;padding:0 2px;background:none;border:none;cursor:pointer}
@@ -47,7 +47,7 @@ body.home:not(.scrolled) .top .brand img{opacity:0}
 .sound-on .sound-btn i:nth-child(2){animation-duration:.8s;animation-delay:-.3s}
 .sound-on .sound-btn i:nth-child(3){animation-duration:1.4s;animation-delay:-.6s}
 @keyframes eq{from{height:3px}to{height:13px}}
-.sound-invite{margin-top:2.2em;background:none;border:none;border-bottom:1px solid var(--or-line);padding:0 0 .5em;color:var(--papier);font-family:var(--font-latin);font-size:10px;letter-spacing:.34em;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .8s}
+.sound-invite{margin-top:2.2em;background:none;border:none;border-bottom:1px solid var(--or-line);padding:0 0 .5em;color:var(--text-bright);font-family:var(--font-latin);font-size:10px;letter-spacing:.34em;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .8s}
 .intro .sound-invite{display:none}                                  /* v6.4：開場時由 Enter 決定聲音 */
 .intro-skip .sound-invite{opacity:1}
 .sound-on .sound-invite{opacity:0!important;pointer-events:none;animation:none!important}
@@ -101,13 +101,18 @@ body.menu-open{overflow:hidden}
 
 /* ── v6.4 Enter：停在霓虹那一幕 ── */
 .gate{display:none}
-.intro .gate{display:flex;flex-direction:column;align-items:center;gap:1.1em;margin-top:2.6em;opacity:0;visibility:hidden;animation:gatein .9s ease 2.9s forwards}
+.intro .gate{display:flex;flex-direction:column;align-items:center;gap:.5em;margin-top:2.4em;opacity:0;visibility:hidden;animation:gatein .9s ease 2.9s forwards}
 @keyframes gatein{from{opacity:0;visibility:visible}to{opacity:1;visibility:visible}}
-.enter{min-width:9.5em;min-height:44px;background:none;border:1px solid var(--or-line);padding:1.15em 2em 1.05em;color:var(--papier);font-family:var(--font-latin);font-size:11px;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;line-height:1;cursor:pointer;transition:border-color .5s,box-shadow .5s}
-.enter:hover,.enter:focus-visible{border-color:var(--or);box-shadow:0 0 14px -4px var(--or-glow)}
-.enter-quiet{min-height:44px;background:none;border:none;padding:.6em .8em;color:var(--papier);opacity:.62;font:inherit;font-size:11px;letter-spacing:.14em;cursor:pointer;transition:opacity .4s}
-.enter-quiet:hover,.enter-quiet:focus-visible{opacity:1}
-.enter:focus-visible,.enter-quiet:focus-visible{outline:1px solid var(--or);outline-offset:5px}
+/* v6.5（Mo）：不要按鈕框、不要底色——「Enter」只是一行淡金小字，「不開聲音進入」再小、再淡；
+   hover／focus 只微微變亮並出一條細底線（焦點看得見，但不用框）。顏色只用 tokens 裡的 --or（字標金）與 --text-soft（灰） */
+.enter,.enter-quiet{position:relative;min-height:44px;background:none;border:0;border-radius:0;box-shadow:none;outline:1px solid transparent;font-family:var(--font-latin);line-height:1;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .5s,color .5s}
+.enter::after,.enter-quiet::after{content:'';position:absolute;left:50%;bottom:10px;height:1px;width:0;background:currentColor;transform:translateX(-50%);opacity:.7;transition:width .5s var(--ease-line)}
+.hero .gate .enter{padding:0 .4em;color:var(--or);opacity:.86;font-size:12px;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase}   /* .hero .gate：壓過中文頁 [lang=en] 字距歸零 */
+.hero .gate .enter-quiet{padding:0 .4em;color:var(--text-soft);opacity:.8;font-size:10px;letter-spacing:.16em;text-indent:.16em}
+.hero .gate .enter:hover,.hero .gate .enter:focus-visible,.hero .gate .enter-quiet:hover,.hero .gate .enter-quiet:focus-visible{opacity:1}
+.enter:hover::after,.enter:focus-visible::after{width:calc(100% - .8em)}
+.enter-quiet:hover::after,.enter-quiet:focus-visible::after{width:calc(100% - .8em)}
+:lang(zh) .hero .gate .enter-quiet{letter-spacing:.2em;text-indent:.2em}
 /* 點一下畫面、或減少動態：直接是 Enter 那一幕 */
 .intro.ff .neon .tube{animation:none;opacity:1}
 .intro.ff .neon .t5{animation:buzz 3.4s linear 1s infinite}
@@ -187,6 +192,74 @@ body.menu-open{overflow:hidden}
 .mod .meta-l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin:-.2em auto 1.2em}
 :lang(zh) .mod .meta-l{letter-spacing:.12em}
 :lang(zh) .mod h2 [lang="fr"]{letter-spacing:0}
+
+/* ── v6.5：料理頁 本季菜單（照 9/29 紙本菜單：置中一道一行，「或」那道寫加價） ── */
+.mod.menu-card{padding-top:12vh}
+.menu-card .sub{margin-bottom:2em}
+.courses{list-style:none;max-width:var(--col);margin:0 auto}
+.courses li{font-style:italic;font-size:17px;line-height:1.45;padding:.5em 0}
+.courses li .en{display:block;font-size:13px;opacity:.75;margin-top:.15em}
+.courses li.or{font-size:12px;letter-spacing:.2em;color:var(--or);padding:.1em 0;font-style:italic}
+.courses .add{font-style:normal;font-size:11px;letter-spacing:.12em;color:var(--or);white-space:nowrap;margin-left:.4em}
+.menu-card .pair{margin:2.6em auto 0;padding-top:2.2em;border-top:1px solid var(--line);max-width:22rem}
+.menu-card .pair .label{margin-bottom:1.4em}
+.menu-card .pair p+p{margin-top:1.2em}
+.menu-card .k{display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--or);line-height:1;margin-bottom:.7em}
+.mod .fine{margin-top:2em;font-size:11px;letter-spacing:.08em;color:var(--text-soft)}
+:lang(zh) .courses li{font-style:normal;letter-spacing:.08em}
+:lang(zh) .courses li .en{font-style:italic;letter-spacing:0}
+
+/* ── v6.5：酒單（主檔 → 網站）國家可收合 → 產區 → 類別 → 子產區；手機一行：酒名｜年份｜價格 ── */
+.wl{max-width:44rem;margin:0 auto;padding:var(--gap) 16px 0;text-align:center}
+.wl .wl-note{font-size:12px;letter-spacing:.06em;color:var(--text);max-width:var(--col);margin:0 auto}
+.wl .wl-note+.wl-note{margin-top:.4em}
+.wl-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:.4em .6em;margin:2.4em auto 2em}
+.wl-filter button{min-height:40px;background:none;border:0;border-bottom:1px solid transparent;padding:0 .5em;color:var(--text);font:inherit;font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;opacity:.8}
+.wl-filter button[aria-pressed="true"]{opacity:1;color:var(--text-bright);border-bottom-color:var(--or)}
+.wl-filter button:focus-visible{outline:1px solid var(--or);outline-offset:3px}
+.wl-country{text-align:left;border-top:1px solid var(--line)}
+.wl-country:last-of-type{border-bottom:1px solid var(--line)}
+.wl-country summary{list-style:none;display:flex;align-items:baseline;justify-content:space-between;gap:1em;padding:1.15em 2px;cursor:pointer;font-style:italic;font-size:22px;line-height:1.3}
+.wl-country summary::-webkit-details-marker{display:none}
+.wl-country summary::after{content:'+';font-style:normal;font-size:16px;color:var(--or);margin-left:.6em}
+.wl-country[open] summary::after{content:'–'}
+.wl-country summary:focus-visible{outline:1px solid var(--or);outline-offset:2px}
+.wl-country .cn{flex:1}
+.wl-country .cn [lang="en"]{font-size:14px;opacity:.7}
+.wl-country .ct{font-style:normal;font-size:11px;letter-spacing:.14em;color:var(--text-soft)}
+.wl-region{padding:.4em 0 2.2em}
+.wl-region h3{font-weight:400;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin:1.4em 0 .2em}
+.wl-cat h4{display:flex;justify-content:space-between;align-items:baseline;font-weight:400;font-style:italic;font-size:17px;margin:1.2em 0 .3em;padding-bottom:.35em;border-bottom:1px solid var(--line)}
+.wl-cat h4 .cols{display:flex;gap:0;font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft)}
+.wl-cat h4 .cols span:first-child{width:3.2em;text-align:right}
+.wl-cat h4 .cols span:last-child{width:4.6em;text-align:right}
+.wl-sub{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);margin:1.1em 0 .1em}
+.wl ul{list-style:none}
+.w{position:relative;display:flex;align-items:baseline;gap:0;padding:.5em 0;font-size:14px;line-height:1.45;border-bottom:1px solid rgba(238,232,220,.06)}
+.w .n{flex:1;min-width:0;padding-right:.6em;overflow-wrap:anywhere}
+.w .n small{font-size:11px;letter-spacing:.06em;color:var(--text-soft);white-space:nowrap}
+.w .v,.w .p{flex:none;text-align:right;font-variant-numeric:tabular-nums lining-nums;font-size:13px}
+.w .v{width:3.2em;color:var(--text)}
+.w .p{width:4.6em;color:var(--text-bright)}
+:lang(zh) .wl,:lang(zh) .wl .n{letter-spacing:0}
+:lang(zh) .wl .wl-note{letter-spacing:.06em}
+:lang(zh) .wl-country summary{font-style:normal;letter-spacing:.12em}
+:lang(zh) .wl-cat h4{font-style:normal;letter-spacing:.12em}
+.wl [hidden]{display:none!important}
+
+/* ── v6.5：售完＝復古酒單的劃線（Mo 指定紅線，品牌色的例外）──
+   整行保留，一條略斜、輕微不規則的單線劃過酒名到價格（像紙本上用筆劃掉）；顏色是沉的酒紅，不用鮮紅。
+   線用 SVG 背景（preserveAspectRatio=none 拉滿整行），字還讀得到。列印酒單照同一套：線色、粗細、斜度、Sold＋日期小字。 */
+:root{--sold-ink:#A8454B}   /* 沉酒紅：在灰藍底上看得到（對比約 3:1，線不是字），又不像警示紅｜品牌色例外，只用在售完線 */
+.w.sold .n,.w.sold .v,.w.sold .p{color:var(--text-soft)}
+.w.sold::after{content:'';position:absolute;left:-4px;right:-2px;top:calc(.5em + .725em - 6px);height:14px;   /* 劃在第一行字的中間（酒名換行時也只劃一條） */pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath d='M1 9.2 C 60 8.4 110 7.9 170 7.1 S 290 5.6 340 5.2 S 385 4.4 399 4.9' fill='none' stroke='%23A8454B' stroke-width='1.7' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat 0 0/100% 100%}
+.sold-tag{position:absolute;right:0;top:100%;margin-top:-.55em;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-soft);line-height:1;white-space:nowrap}   /* 小字用米灰（字要讀得到）；紅色只給線 */
+.w.sold{padding-bottom:.95em}
+@media (min-width:640px){
+  .w{font-size:15px}
+  .wl-country summary{font-size:25px}
+}
 
 /* ── v6.2：中文頁 ── 標題不准斜體（規範）；中文內文 Regular、字距略開 */
 :lang(zh) body{letter-spacing:.04em}

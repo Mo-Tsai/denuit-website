@@ -25,9 +25,9 @@
   --on-gris:#FCFCFC;
   --line-on-gris:rgba(252,252,252,.3);
   /* 午夜藍底上的字 */
-  --text-bright:#ECEEEB;
-  --text:#CFD3D8;
-  --text-soft:#9AA1AA;
+  --text-bright:#EEE8DC;     /* v6.5（Mo 2026-10-08）：米白、帶一點泛舊；舊值 #ECEEEB */
+  --text:#D6CFC2;            /* v6.5：舊值 #CFD3D8 */
+  --text-soft:#A19A8E;       /* v6.5：舊值 #9AA1AA */
   --line:rgba(255,255,255,.12);
   /* 白底文字 */
   --ink:#111111;

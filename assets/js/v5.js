@@ -68,6 +68,29 @@
     else if (/inline\.app/.test(h)) track('reservation_click', { link_type: 'inline' });
   }, true);
 
+  /* v6.5 酒單：類別篩選（沒有 JS 時按鈕不出現，全部酒款照樣列出）。選了類別就只留那一類，沒有酒的國家／產區整段藏起來 */
+  const wl = document.querySelector('.wl');
+  if (wl) {
+    const bar = wl.querySelector('.wl-filter');
+    if (bar) {
+      bar.hidden = false;
+      const apply = g => {
+        bar.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === g));
+        wl.querySelectorAll('.wl-cat').forEach(c => { c.hidden = !!g && c.dataset.g !== g; });
+        wl.querySelectorAll('.wl-region').forEach(r => { r.hidden = !r.querySelector('.wl-cat:not([hidden])'); });
+        wl.querySelectorAll('.wl-country').forEach(c => {
+          const n = c.querySelectorAll('.wl-cat:not([hidden]) .w').length;
+          c.hidden = n === 0; const ct = c.querySelector('.ct'); if (ct) ct.textContent = n;
+        });
+      };
+      bar.addEventListener('click', e => { const b = e.target.closest('button'); if (b) apply(b.dataset.f); });
+    }
+    /* 從別處連到某一支酒（#w0123）：先把所在國家打開再捲過去 */
+    const open = () => { const t = location.hash && wl.querySelector(location.hash); if (t) { const d = t.closest('details'); if (d) d.open = true; t.scrollIntoView({ block: 'center' }); } };
+    if (/^#w\d{4}$/.test(location.hash)) open();
+    addEventListener('hashchange', () => { if (/^#w\d{4}$/.test(location.hash)) open(); });
+  }
+
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   onScroll();
