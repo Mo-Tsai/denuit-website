@@ -94,6 +94,8 @@
   const tcColor = () => { const tc = document.querySelector('meta[name=theme-color]'); if (tc) tc.content = '#303032'; };
   let seen = null;
   try { seen = sessionStorage.getItem('dn-entered') === '1'; } catch (e) {}
+  /* v6.9：按重新整理一律重播開場（Mo 要看到黑底與霓虹）；站內換頁、回首頁仍不擋 */
+  try { if ((performance.getEntriesByType('navigation')[0] || {}).type === 'reload') seen = false; } catch (e) {}
   if (seen === null) {      // 讀不到 sessionStorage 才看來源：站內連回、上一頁不擋（根網址轉址頁也算站內，所以平常不用這招）
     const nav = (performance.getEntriesByType('navigation')[0] || {}).type;
     try { seen = nav === 'back_forward' || (nav !== 'reload' && !!document.referrer && new URL(document.referrer).origin === location.origin); } catch (e) {}
@@ -162,7 +164,7 @@
   <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
   <p class="lang"><a href="../zh/index.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW" aria-current="true">中文</a><span aria-hidden="true"> · </span><a href="../en/index.html" hreflang="en" lang="en">English</a></p>
   <p class="word">我們從夜出發。</p>
-  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.8</span></p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.9</span></p>
 </footer>
 <script src="../assets/js/v5.js?v=6.6"></script>
 </body>
