@@ -161,6 +161,14 @@ body.menu-open{overflow:hidden}
 .mod.news .sub{margin-bottom:.9em}
 [id]{scroll-margin-top:80px}
 
+/* ── v6.3：酒單頁 本季佐餐搭配 ── */
+.mod.glass-head{padding-top:var(--gap)}
+.mod.glass{padding-top:9vh}
+.mod.glass h2{font-size:21px}
+.mod .meta-l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin:-.2em auto 1.2em}
+:lang(zh) .mod .meta-l{letter-spacing:.12em}
+:lang(zh) .mod h2 [lang="fr"]{letter-spacing:0}
+
 /* ── v6.2：中文頁 ── 標題不准斜體（規範）；中文內文 Regular、字距略開 */
 :lang(zh) body{letter-spacing:.04em}
 :lang(zh) .mod h2,:lang(zh) .page-head h1,:lang(zh) .overlay nav a,:lang(zh) .hero .line,:lang(zh) .site-foot .word{font-style:normal}
