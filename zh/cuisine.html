@@ -1,117 +1,241 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">  <!-- 討論用網址，正式網域上線前不給搜尋引擎收錄 -->
-<title>典藏｜de nuit</title>
-<meta name="description" content="de nuit 的典藏菜色：古俊基以法式結構書寫台灣的季節。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0E0C0B">
+<title>料理與菜單｜de nuit</title>
+<meta name="description" content="de nuit 的料理：2026 春夏菜單《風味博物誌》與典藏菜色。古俊基以法式的結構，書寫台灣的季節。">
+<link rel="canonical" href="https://www.denuit.com.tw/zh/cuisine.html">
+<link rel="alternate" hreflang="en" href="https://www.denuit.com.tw/en/cuisine.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://www.denuit.com.tw/zh/cuisine.html">
+<link rel="alternate" hreflang="x-default" href="https://www.denuit.com.tw/en/cuisine.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="典藏｜de nuit">
-<meta property="og:description" content="de nuit 的典藏菜色：古俊基以法式結構書寫台灣的季節。">
-<meta property="og:image" content="https://mo-tsai.github.io/denuit-website/assets/img/og.jpg">
+<meta property="og:site_name" content="de nuit">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://www.denuit.com.tw/zh/cuisine.html">
+<meta property="og:title" content="料理與菜單｜de nuit">
+<meta property="og:description" content="de nuit 的料理：2026 春夏菜單《風味博物誌》與典藏菜色。古俊基以法式的結構，書寫台灣的季節。">
+<meta property="og:image" content="https://www.denuit.com.tw/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" hreflang="zh-Hant" href="../zh/cuisine.html">
-<link rel="alternate" hreflang="en" href="../en/cuisine.html">
-<link rel="alternate" hreflang="x-default" href="../en/cuisine.html">
 <link rel="icon" href="../assets/img/logo.png">
 <link rel="apple-touch-icon" href="../assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=4.3">
-<link rel="stylesheet" href="../assets/css/v4.css?v=4.3">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=6.2">
+<link rel="stylesheet" href="../assets/css/v5.css?v=6.2">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Menu", "@id": "https://www.denuit.com.tw/zh/cuisine.html#menu", "name": "de nuit 2026 春夏菜單《風味博物誌》", "inLanguage": "zh-Hant-TW", "url": "https://www.denuit.com.tw/zh/cuisine.html", "hasMenuSection": [{"@type": "MenuSection", "name": "風味博物誌", "hasMenuItem": [{"@type": "MenuItem", "name": "白蘆筍／味噌／桂丁雞"}, {"@type": "MenuItem", "name": "生蠔／微藻物／茴香"}, {"@type": "MenuItem", "name": "鴨肝／鮑魚／昆布"}, {"@type": "MenuItem", "name": "竹筴魚／卡菲爾檸檬／香菜"}, {"@type": "MenuItem", "name": "象拔蚌／魚子醬／墨西哥辣椒"}, {"@type": "MenuItem", "name": "市場鮮魚／布列塔尼香料／櫛瓜"}, {"@type": "MenuItem", "name": "羊鞍／辣根／手指檸檬"}, {"@type": "MenuItem", "name": "彰化芳苑玫瑰鴨／芒果／野米"}, {"@type": "MenuItem", "name": "杏桃／蕎麥／桂花"}, {"@type": "MenuItem", "name": "鳳梨／黑蒜／可可"}, {"@type": "MenuItem", "name": "茶點"}]}]}</script>
 </head>
 <body class="">
 <div class="progress" aria-hidden="true"></div>
+<audio id="bgm" src="../assets/audio/denuit_night.mp3" loop preload="none"></audio>
 <header class="top">
-  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
-  <div class="top-right">
-    <p class="lang top-lang"><a class="active" href="../zh/cuisine.html">ZH</a> <a href="../en/cuisine.html">EN</a></p>
+  <div class="top-left">
     <button class="menu-btn" data-menu aria-expanded="false">目錄</button>
-    <a class="book" href="reservation.html">訂位</a>
+    <button class="sound-btn" data-sound aria-pressed="false" aria-label="Sound"><i></i><i></i><i></i></button>
+    <a class="lang-s" href="../en/cuisine.html" hreflang="en" lang="en">EN</a>
   </div>
+  <a class="brand" href="index.html"><img src="../assets/img/logo.png" alt="de nuit"></a>
+  <a class="btn btn-s" href="reservation.html">訂位</a>
 </header>
-<div class="overlay">
+<div class="overlay" aria-hidden="true">
   <button class="menu-btn close" data-menu>關閉</button>
   <nav>
     <a href="index.html"><small>I</small>de nuit</a>
-    <a href="cuisine.html" aria-current="page"><small>II</small>典藏</a>
-    <a href="about.html"><small>III</small>主廚與團隊</a>
-    <a href="journal.html"><small>IV</small>Nuits・過去的夜晚</a>
-    <a href="reservation.html"><small>V</small>訂位</a>
+    <a href="cuisine.html" aria-current="page"><small>II</small>料理</a>
+    <a href="wine.html"><small>III</small>酒單</a>
+    <a href="about.html"><small>IV</small>主廚與團隊</a>
+    <a href="news.html"><small>V</small>消息</a>
+    <a href="reservation.html"><small>VI</small>訂位</a>
   </nav>
-  <div class="meta"><p>台北市大安區信義路四段175號<br>捷運信義安和站 1 號出口・步行約 3 分鐘</p><p>午餐・週五、週六 <span class="nw">11:30 – 15:00</span><br>晚餐・週二至週六 <span class="nw">18:00 – 22:30</span><br>週日、週一公休</p><p class="lang"><a class="active" href="../zh/cuisine.html">ZH</a> <a href="../en/cuisine.html">EN</a></p></div>
+  <p class="meta">台北市大安區信義路四段 175 號<br>捷運信義安和站 1 號出口</p>
+  <p class="lang meta"><a href="../zh/cuisine.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW" aria-current="true">中文</a><span aria-hidden="true"> · </span><a href="../en/cuisine.html" hreflang="en" lang="en">English</a></p>
 </div>
 <main>
 <section class="page-head">
-  <p class="kicker">Signatures</p>
-  <h1>典藏</h1>
+  <p class="label">料理</p>
+  <h1>料理</h1>
   <p class="lede">有些菜留下來，成為典藏。有些菜只屬於一個季節，寫成一個章節。</p>
+  <div class="ln" aria-hidden="true"></div>
 </section>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-02.jpg" alt="鵪鶉／羊肚菌／黃酒" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">I</span><h3>鵪鶉／羊肚菌／黃酒</h3><p class="fr">Quail / Morel / Vin&nbsp;jaune</p><p class="note">嘉義溪口的鵪鶉。腿包鴨肝、以法國黃酒燉煮；胸肉填羊肚菌與雞肝慕斯。古俊基的經典。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-03.jpg" alt="帝王鮭／百香果／燈籠果" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">II</span><h3>帝王鮭／百香果／燈籠果</h3><p class="fr">King&nbsp;salmon / Passion&nbsp;fruit / Gooseberry</p><p class="note">紐西蘭庫克山的冰河帝王鮭，柑橘醃製，配台灣百香果與燈籠果汁、金蓮花油。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-07.jpg" alt="鮑魚／鴨肝／昆布高湯" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">III</span><h3>鮑魚／鴨肝／昆布高湯</h3><p class="fr">Abalone / Foie&nbsp;gras / Dashi</p><p class="note">以柴魚昆布高湯串起鮑魚與鴨肝；青胡椒、醋漬大根，幾滴雪莉醋。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-10.jpg" alt="鳳梨／黑蒜／可可" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">IV</span><h3>鳳梨／黑蒜／可可</h3><p class="fr">Pineapple / Black&nbsp;garlic / Cacao</p><p class="note">黑蒜做成甜點。金鑽鳳梨的果酸、可可慕斯，尾韻一點成熟的苦。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-04.jpg" alt="羊肋／哈里薩／胡椒葉" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">V</span><h3>羊肋／哈里薩／胡椒葉</h3><p class="fr">Lamb / Harissa / Pepper&nbsp;leaf</p><p class="note">紐西蘭高地的小羔羊肋排，中東哈里薩醬，外層包台灣原種胡椒葉輕煎。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-06.jpg" alt="羊鞍／龍眼木／玫瑰露" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">VI</span><h3>羊鞍／龍眼木／玫瑰露</h3><p class="fr">Lamb&nbsp;saddle / Longan&nbsp;wood / Rose&nbsp;wine</p><p class="note">靈感來自港式叉燒：龍眼木煙燻，羊骨醬汁加玫瑰露酒熬煮。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-05.jpg" alt="玫瑰鴨／芒果／枸杞" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">VII</span><h3>玫瑰鴨／芒果／枸杞</h3><p class="fr">Rose&nbsp;duck / Mango / Goji</p><p class="note">炭烤玫瑰鴨，兩款鴨骨醬汁；三種台灣芒果：愛文、金煌、黑香。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-01.jpg" alt="生蠔／微藻／茴香" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">VIII</span><h3>生蠔／微藻／茴香</h3><p class="fr">Oyster / Plankton / Fennel</p><p class="note">法國生蠔做成冰淇淋，配茴香泥與微藻奶油。上一季的作品，這一季再往前推。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-08.jpg" alt="金目鯛／黃酒／櫛瓜花" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">IX</span><h3>金目鯛／黃酒／櫛瓜花</h3><p class="fr">Golden&nbsp;eye&nbsp;snapper / Vin&nbsp;jaune / Zucchini&nbsp;flower</p><p class="note">炭烤金目鯛，黃酒奶油慕斯與布列塔尼咖哩香料泡泡，一濃一輕。</p></div>
-</article>
-<article class="sig">
-  <figure class="reveal"><img src="../assets/img/sig-09.jpg" alt="白蘆筍／桂丁雞／味噌" loading="lazy"></figure>
-  <div class="meta reveal"><span class="no">X</span><h3>白蘆筍／桂丁雞／味噌</h3><p class="fr">White&nbsp;asparagus / Chicken / Miso</p><p class="note">一冷一熱：冷的是白蘆筍凍與桂丁雞清湯凍，熱的是脆殼裡的白蘆筍 velouté。</p></div>
-</article>
-<section class="section origins">
-  <p class="kicker reveal">Origins</p>
-  <h2 class="reveal">產地</h2>
-  <dl class="reveal"><div class="row"><dt>宜蘭大溪漁港</dt><dd>甜蝦</dd></div><div class="row"><dt>嘉義溪口</dt><dd>鵪鶉</dd></div><div class="row"><dt>金門</dt><dd>野生竹午魚</dd></div><div class="row"><dt>屏東</dt><dd>蓮霧</dd></div><div class="row"><dt>台灣</dt><dd>金鑽鳳梨、愛文芒果</dd></div><div class="row"><dt>紐西蘭庫克山</dt><dd>帝王鮭</dd></div></dl>
+<section class="mod reveal chapter" id="chapitre">
+  <figure><img src="../assets/img/s26-kv-01.jpg" alt="風味博物誌" loading="lazy"></figure>
+  <p class="label">Chapitre・2026 春夏</p>
+  <h2>風味博物誌</h2>
+  <p>這一季，古俊基是風味的採集者。</p>
+  <p>三條線索貫穿整套菜單：大地風物、植物辛香、時間沉澱。</p>
+  <p>從開場的法國白蘆筍，到甜點裡的黑蒜。</p>
 </section>
-<section class="section">
-  <p class="kicker reveal">Menu</p>
-  <h2 class="reveal">菜單</h2>
-  <div class="menu-grid reveal">
-    <article><h3>午間套餐</h3><p>週五・週六 <span class="nw">11:30 – 15:00</span><br>最後入座 12:15</p></article>
-    <article><h3>晚間套餐</h3><p>週二至週六 <span class="nw">18:00 – 22:30</span><br>最後入座 19:30・八道／十道菜</p></article>
-    <article><h3>佐餐</h3><p>侍酒師精選佐餐<br>亦備無酒精創作飲品</p></article>
-  </div>
-  <p class="links reveal"><a class="arrow" href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">當季新作・Instagram ↗</a><a class="arrow" href="reservation.html">訂位 →</a></p>
+<section class="mod reveal threads">
+  <p><span class="k">大地風物</span><br>法國白蘆筍・昆布・鮑魚・深海微藻</p>
+  <p><span class="k">植物辛香</span><br>馬告・卡菲爾檸檬・布列塔尼香料・辣根</p>
+  <p><span class="k">時間沉澱</span><br>黑蒜・蕎麥・桂花・熟成果香</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-white-asparagus.jpg" alt="白蘆筍／味噌／桂丁雞" loading="lazy"></figure>
+  <p class="num">I</p>
+  <h2><span class="nw">白蘆筍</span>／<span class="nw">味噌</span>／<span class="nw">桂丁雞</span></h2>
+  <p class="alt" lang="en">White&nbsp;asparagus / Miso / Poultry</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-oyster.jpg" alt="生蠔／微藻物／茴香" loading="lazy"></figure>
+  <p class="num">II</p>
+  <h2><span class="nw">生蠔</span>／<span class="nw">微藻物</span>／<span class="nw">茴香</span></h2>
+  <p class="alt" lang="en">Oyster / Plankton / Fennel</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-foie-gras-abalone.jpg" alt="鴨肝／鮑魚／昆布" loading="lazy"></figure>
+  <p class="num">III</p>
+  <h2><span class="nw">鴨肝</span>／<span class="nw">鮑魚</span>／<span class="nw">昆布</span></h2>
+  <p class="alt" lang="en">Foie&nbsp;gras / Abalone / Kombu</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-shima-aji.jpg" alt="竹筴魚／卡菲爾檸檬／香菜" loading="lazy"></figure>
+  <p class="num">IV</p>
+  <h2><span class="nw">竹筴魚</span>／<span class="nw">卡菲爾檸檬</span>／<span class="nw">香菜</span></h2>
+  <p class="alt" lang="en">Shima&nbsp;aji / Kaffir&nbsp;lime / Coriander</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-geoduck.jpg" alt="象拔蚌／魚子醬／墨西哥辣椒" loading="lazy"></figure>
+  <p class="num">V</p>
+  <h2><span class="nw">象拔蚌</span>／<span class="nw">魚子醬</span>／<span class="nw">墨西哥辣椒</span></h2>
+  <p class="alt" lang="en">Geoduck / Caviar / Jalapeño</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-market-fish.jpg" alt="市場鮮魚／布列塔尼香料／櫛瓜" loading="lazy"></figure>
+  <p class="num">VI</p>
+  <h2><span class="nw">市場鮮魚</span>／<span class="nw">布列塔尼香料</span>／<span class="nw">櫛瓜</span></h2>
+  <p class="alt" lang="en">Market&nbsp;fish / Breton&nbsp;spice / Zucchini</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-lamb-saddle.jpg" alt="羊鞍／辣根／手指檸檬" loading="lazy"></figure>
+  <p class="num">VII</p>
+  <h2><span class="nw">羊鞍</span>／<span class="nw">辣根</span>／<span class="nw">手指檸檬</span></h2>
+  <p class="alt" lang="en">Lamb&nbsp;saddle / Horseradish / Finger&nbsp;lime</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-rose-duck.jpg" alt="彰化芳苑玫瑰鴨／芒果／野米" loading="lazy"></figure>
+  <p class="num">VIII</p>
+  <h2><span class="nw">彰化芳苑玫瑰鴨</span>／<span class="nw">芒果</span>／<span class="nw">野米</span></h2>
+  <p class="alt" lang="en">Duck / Mango / Wild&nbsp;rice</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-apricot.jpg" alt="杏桃／蕎麥／桂花" loading="lazy"></figure>
+  <p class="num">IX</p>
+  <h2><span class="nw">杏桃</span>／<span class="nw">蕎麥</span>／<span class="nw">桂花</span></h2>
+  <p class="alt" lang="en">Apricot / Buckwheat / Osmanthus</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-pineapple.jpg" alt="鳳梨／黑蒜／可可" loading="lazy"></figure>
+  <p class="num">X</p>
+  <h2><span class="nw">鳳梨</span>／<span class="nw">黑蒜</span>／<span class="nw">可可</span></h2>
+  <p class="alt" lang="en">Pineapple / Black&nbsp;garlic / Cocoa</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/s26-mignardise.jpg" alt="茶點" loading="lazy"></figure>
+  <p class="num">XI</p>
+  <h2><span class="nw">茶點</span></h2>
+  <p class="alt" lang="en">Mignardise</p>
+</section>
+<section class="mod reveal sig-head">
+  <p class="label">典藏</p>
+  <h2>有些菜，留下來</h2>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-02.jpg" alt="鵪鶉／羊肚菌／黃酒" loading="lazy"></figure>
+  <p class="num">I</p>
+  <h2><span class="nw">鵪鶉</span>／<span class="nw">羊肚菌</span>／<span class="nw">黃酒</span></h2>
+  <p class="alt" lang="en">Quail / Morel / Vin&nbsp;jaune</p>
+  <p>嘉義溪口的鵪鶉。腿包鴨肝、以法國黃酒燉煮；胸肉填羊肚菌與雞肝慕斯。古俊基的經典。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-03.jpg" alt="帝王鮭／百香果／燈籠果" loading="lazy"></figure>
+  <p class="num">II</p>
+  <h2><span class="nw">帝王鮭</span>／<span class="nw">百香果</span>／<span class="nw">燈籠果</span></h2>
+  <p class="alt" lang="en">King&nbsp;salmon / Passion&nbsp;fruit / Gooseberry</p>
+  <p>紐西蘭庫克山的冰河帝王鮭，柑橘醃製，配台灣百香果與燈籠果汁、金蓮花油。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-07.jpg" alt="鮑魚／鴨肝／昆布高湯" loading="lazy"></figure>
+  <p class="num">III</p>
+  <h2><span class="nw">鮑魚</span>／<span class="nw">鴨肝</span>／<span class="nw">昆布高湯</span></h2>
+  <p class="alt" lang="en">Abalone / Foie&nbsp;gras / Dashi</p>
+  <p>以柴魚昆布高湯串起鮑魚與鴨肝；青胡椒、醋漬大根，幾滴雪莉醋。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-10.jpg" alt="鳳梨／黑蒜／可可" loading="lazy"></figure>
+  <p class="num">IV</p>
+  <h2><span class="nw">鳳梨</span>／<span class="nw">黑蒜</span>／<span class="nw">可可</span></h2>
+  <p class="alt" lang="en">Pineapple / Black&nbsp;garlic / Cacao</p>
+  <p>黑蒜做成甜點。金鑽鳳梨的果酸、可可慕斯，尾韻一點成熟的苦。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-04.jpg" alt="羊肋／哈里薩／胡椒葉" loading="lazy"></figure>
+  <p class="num">V</p>
+  <h2><span class="nw">羊肋</span>／<span class="nw">哈里薩</span>／<span class="nw">胡椒葉</span></h2>
+  <p class="alt" lang="en">Lamb / Harissa / Pepper&nbsp;leaf</p>
+  <p>紐西蘭高地的小羔羊肋排，中東哈里薩醬，外層包台灣原種胡椒葉輕煎。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-06.jpg" alt="羊鞍／龍眼木／玫瑰露" loading="lazy"></figure>
+  <p class="num">VI</p>
+  <h2><span class="nw">羊鞍</span>／<span class="nw">龍眼木</span>／<span class="nw">玫瑰露</span></h2>
+  <p class="alt" lang="en">Lamb&nbsp;saddle / Longan&nbsp;wood / Rose&nbsp;wine</p>
+  <p>靈感來自港式叉燒：龍眼木煙燻，羊骨醬汁加玫瑰露酒熬煮。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-05.jpg" alt="玫瑰鴨／芒果／枸杞" loading="lazy"></figure>
+  <p class="num">VII</p>
+  <h2><span class="nw">玫瑰鴨</span>／<span class="nw">芒果</span>／<span class="nw">枸杞</span></h2>
+  <p class="alt" lang="en">Rose&nbsp;duck / Mango / Goji</p>
+  <p>炭烤玫瑰鴨，兩款鴨骨醬汁；三種台灣芒果：愛文、金煌、黑香。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-01.jpg" alt="生蠔／微藻／茴香" loading="lazy"></figure>
+  <p class="num">VIII</p>
+  <h2><span class="nw">生蠔</span>／<span class="nw">微藻</span>／<span class="nw">茴香</span></h2>
+  <p class="alt" lang="en">Oyster / Plankton / Fennel</p>
+  <p>法國生蠔做成冰淇淋，配茴香泥與微藻奶油。上一季的作品，這一季再往前推。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-08.jpg" alt="金目鯛／黃酒／櫛瓜花" loading="lazy"></figure>
+  <p class="num">IX</p>
+  <h2><span class="nw">金目鯛</span>／<span class="nw">黃酒</span>／<span class="nw">櫛瓜花</span></h2>
+  <p class="alt" lang="en">Golden&nbsp;eye&nbsp;snapper / Vin&nbsp;jaune / Zucchini&nbsp;flower</p>
+  <p>炭烤金目鯛，黃酒奶油慕斯與布列塔尼咖哩香料泡泡，一濃一輕。</p>
+</section>
+<section class="mod reveal dish">
+  <figure><img src="../assets/img/sig-09.jpg" alt="白蘆筍／桂丁雞／味噌" loading="lazy"></figure>
+  <p class="num">X</p>
+  <h2><span class="nw">白蘆筍</span>／<span class="nw">桂丁雞</span>／<span class="nw">味噌</span></h2>
+  <p class="alt" lang="en">White&nbsp;asparagus / Chicken / Miso</p>
+  <p>一冷一熱：冷的是白蘆筍凍與桂丁雞清湯凍，熱的是脆殼裡的白蘆筍 velouté。</p>
+</section>
+<section class="mod reveal ">
+  <p class="label">產地</p>
+  <h2>從哪裡來</h2>
+  <p>宜蘭大溪漁港・甜蝦<br>嘉義溪口・鵪鶉<br>金門・野生竹午魚<br>屏東・蓮霧<br>台灣・金鑽鳳梨、愛文芒果<br>紐西蘭庫克山・帝王鮭</p>
+</section>
+<section class="mod reveal ">
+  <p class="label">菜單</p>
+  <p>晚餐・週二至週六・<span class="nw">18:00 – 22:30</span>・最後入座 19:30・八道或十道菜</p>
+  <p>午餐・週五、週六・<span class="nw">11:30 – 15:00</span>・最後入座 12:15</p>
+  <p>侍酒師佐餐搭配，亦有無酒精搭配</p>
+  <p class="btns"><a class="btn" href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><a class="btn" href="reservation.html">線上訂位</a></p>
 </section>
 </main>
 <footer class="site-foot">
-  <div><h3>地址</h3><p>台北市大安區信義路四段175號<br>捷運信義安和站 1 號出口・步行約 3 分鐘</p><p><a href="https://maps.google.com/?q=de+nuit+台北市大安區信義路四段175號" target="_blank" rel="noopener">Google Maps ↗</a></p></div>
-  <div><h3>營業時間</h3><p>午餐・週五、週六 <span class="nw">11:30 – 15:00</span><br>晚餐・週二至週六 <span class="nw">18:00 – 22:30</span><br>週日、週一公休</p></div>
-  <div><h3>聯絡</h3><p>電話 <a href="tel:+886227001958">02-2700-1958</a><br>包廂與包場 <a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p></div>
-  <div><h3>社群</h3><p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p></div>
-  <div class="base"><p class="word">我們從夜出發</p><p>© 2026 de nuit · v4.3</p></div>
+  <img class="mark" src="../assets/img/logo.png" alt="de nuit">
+  <p>台北市大安區信義路四段 175 號<br>捷運信義安和站 1 號出口<br><a href="https://maps.google.com/?q=de+nuit+台北市大安區信義路四段175號" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>午餐・週五、週六・<span class="nw">11:30 – 15:00</span><br>晚餐・週二至週六・<span class="nw">18:00 – 22:30</span><br>週日、週一公休</p>
+  <p><a href="tel:+886227001958">02-2700-1958</a><br><a href="mailto:info@denuit.com.tw">info@denuit.com.tw</a></p>
+  <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
+  <p class="lang"><a href="../zh/cuisine.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW" aria-current="true">中文</a><span aria-hidden="true"> · </span><a href="../en/cuisine.html" hreflang="en" lang="en">English</a></p>
+  <p class="word">我們從夜出發。</p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.2</span></p>
 </footer>
-<script src="../assets/js/v4.js?v=4.3"></script>
+<script src="../assets/js/v5.js?v=6.2"></script>
 </body>
 </html>

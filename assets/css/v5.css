@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   de nuit — site v5（2026-09-28）手機優先、英文先行
+   de nuit — site v5（2026-09-28）手機優先；v6.2 起中英兩語
    參照 Ikoyi／Frantzén：全站只有一個模組反覆出現（.mod）——
    置中窄欄 → 金色小標籤 → 標題 → 一段短文 → 細框按鈕；照片留邊、一段一張。
    顏色讀 denuit_tokens.css；v5 另加更深的灰（見下），待網站定案再收進品牌規範。
@@ -37,7 +37,7 @@ body.scrolled .top{background:rgba(44,44,48,.72);-webkit-backdrop-filter:blur(14
 .top .btn-s{justify-self:end}
 .top .brand img{height:24px;transition:opacity .8s}
 body.home:not(.scrolled) .top .brand img{opacity:0}
-.top-left{justify-self:start;display:flex;align-items:center;gap:20px}
+.top-left{justify-self:start;display:flex;align-items:center;gap:16px}
 .menu-btn{background:none;border:none;cursor:pointer;color:var(--papier);font-family:var(--font-latin);font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:1em 0}
 
 /* ── 聲音（v5.9）：配樂取自 ON 曲庫 A14 和弦版（Suno Pro），客人按了才播 ── */
@@ -141,6 +141,35 @@ body.menu-open{overflow:hidden}
 .site-foot a{border-bottom:1px solid var(--or-line)}
 .site-foot .word{font-style:italic;font-size:18px;letter-spacing:0;margin-top:3.4em}
 .site-foot .fine{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.7}
+
+/* ── v6.2：語言切換（頁首左、目錄、頁尾） ── */
+.lang-s{font-size:10px;letter-spacing:.2em;padding:1em 0;opacity:.85}
+.lang a{border-bottom:1px solid transparent;opacity:.75}
+.lang a[aria-current]{opacity:1;border-bottom-color:var(--or-line)}
+.overlay .lang{margin-top:1.4em}
+.site-foot .lang{font-size:12px;letter-spacing:.14em}
+
+/* ── v6.2：料理頁 本季章節／典藏、News ── */
+.mod .alt{font-style:italic;font-size:15px;opacity:.82;margin-top:-.3em}
+.mod.threads{padding-top:10vh}
+.mod.threads p+p{margin-top:1.6em}
+.mod .k{display:inline-block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or);line-height:1;margin-bottom:.6em}
+.mod.dish{padding-top:12vh}
+.mod.dish figure{margin-bottom:1.8em}
+.mod.sig-head{padding-top:var(--gap)}
+.mod.sig-head h2{margin-bottom:0}
+.mod.news .sub{margin-bottom:.9em}
+[id]{scroll-margin-top:80px}
+
+/* ── v6.2：中文頁 ── 標題不准斜體（規範）；中文內文 Regular、字距略開 */
+:lang(zh) body{letter-spacing:.04em}
+:lang(zh) .mod h2,:lang(zh) .page-head h1,:lang(zh) .overlay nav a,:lang(zh) .hero .line,:lang(zh) .site-foot .word{font-style:normal}
+:lang(zh) .page-head h1{letter-spacing:.12em}
+:lang(zh) .mod h2{letter-spacing:.06em}
+:lang(zh) .overlay nav a{font-size:25px;letter-spacing:.14em}
+:lang(zh) .label,:lang(zh) .sub,:lang(zh) .k{letter-spacing:.24em}
+:lang(zh) .alt,:lang(zh) [lang="en"]{letter-spacing:0}
+:lang(zh) .mod .alt{font-style:italic}
 
 /* ── 淡入 ── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease,transform 1.4s var(--ease-reveal)}
