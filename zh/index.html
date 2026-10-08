@@ -24,9 +24,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=6.3">
-<link rel="stylesheet" href="../assets/css/v5.css?v=6.3">
+<link rel="stylesheet" href="../assets/css/denuit_tokens.css?v=6.4">
+<link rel="stylesheet" href="../assets/css/v5.css?v=6.4">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "@id": "https://www.denuit.com.tw/#restaurant", "name": "de nuit", "servesCuisine": ["French", "Contemporary French"], "priceRange": "NT$3,800–4,800", "address": {"@type": "PostalAddress", "streetAddress": "No. 175, Sec. 4, Xinyi Rd., Da'an Dist.", "addressLocality": "Taipei", "postalCode": "106", "addressCountry": "TW"}, "telephone": "+886-2-2700-1958", "email": "info@denuit.com.tw", "acceptsReservations": true, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:30", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "18:00", "closes": "22:30"}], "award": ["MICHELIN Guide Taiwan 2026, One Star", "MICHELIN One Star since 2021", "Tatler Best Taiwan Top 20 2024–2026"], "sameAs": ["https://www.instagram.com/denuit_taipei/", "https://www.facebook.com/denuitTaipei/", "https://guide.michelin.com/tw/zh_TW/taipei-region/taipei/restaurant/de-nuit", "https://www.tatlerasia.com/dining/de-nuit-tatler"], "employee": {"@type": "Person", "name": "Kei Koo", "alternateName": "古俊基", "jobTitle": "Head Chef"}, "url": "https://www.denuit.com.tw/en/", "image": ["https://www.denuit.com.tw/assets/img/og.jpg", "https://www.denuit.com.tw/assets/img/hero-03.jpg"], "logo": "https://www.denuit.com.tw/assets/img/logo.png", "currenciesAccepted": "TWD", "geo": {"@type": "GeoCoordinates", "latitude": 25.0334883, "longitude": 121.5505407}, "hasMap": "https://maps.google.com/?q=de+nuit+175+Section+4+Xinyi+Road+Taipei", "hasMenu": "https://www.denuit.com.tw/en/cuisine.html", "potentialAction": {"@type": "ReserveAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://inline.app/booking/-LpWGduDq2ETMoyArFNj:inline-live-1/-LpWGePJPoMtVhB6IDIJ"}, "result": {"@type": "FoodEstablishmentReservation", "name": "de nuit table reservation"}}}</script>
+<noscript><style>.neon .tube{opacity:1}.draw{width:min(46vw,420px);opacity:1}.hero .line,.hero .hint{opacity:1}.sound-invite{display:none}</style></noscript>
 </head>
 <body class="home">
 <div class="progress" aria-hidden="true"></div>
@@ -56,7 +57,7 @@
 <main>
 <section class="hero">
   <div class="veil" aria-hidden="true"></div>
-  <h1 class="sr">de nuit｜台北米其林一星法式餐廳</h1>
+  <h1 class="sr" tabindex="-1">de nuit｜台北米其林一星法式餐廳</h1>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.83 52.45" class="neon" role="img" aria-label="de nuit">
     <defs><filter id="neon-glow" x="-40%" y="-80%" width="180%" height="260%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="far"/>
@@ -76,6 +77,10 @@
   </svg>
   <div class="draw" aria-hidden="true"></div>
   <p class="line">我們從夜出發。</p>
+  <div class="gate">
+    <button class="enter" type="button" data-enter="on" lang="en">Enter</button>
+    <button class="enter-quiet" type="button" data-enter="off">不開聲音進入</button>
+  </div>
   <button class="sound-invite" data-sound aria-pressed="false">開啟聲音</button>
   <p class="hint" aria-hidden="true">Scroll</p>
 </section>
@@ -83,23 +88,33 @@
 (() => {
   const root = document.documentElement;
   const tcColor = () => { const tc = document.querySelector('meta[name=theme-color]'); if (tc) tc.content = '#303032'; };
-  const nav = (performance.getEntriesByType('navigation')[0] || {}).type;
-  let internal = false;
-  try { internal = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
-  const skip = nav === 'back_forward' || (nav !== 'reload' && internal) || matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (skip) { root.classList.add('intro-skip'); tcColor(); return; }
+  let seen = null;
+  try { seen = sessionStorage.getItem('dn-entered') === '1'; } catch (e) {}
+  if (seen === null) {      // 讀不到 sessionStorage 才看來源：站內連回、上一頁不擋（根網址轉址頁也算站內，所以平常不用這招）
+    const nav = (performance.getEntriesByType('navigation')[0] || {}).type;
+    try { seen = nav === 'back_forward' || (nav !== 'reload' && !!document.referrer && new URL(document.referrer).origin === location.origin); } catch (e) {}
+  }
+  if (seen) { root.classList.add('intro-skip'); tcColor(); return; }
   root.classList.add('intro');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('ff');
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   scrollTo(0, 0);
-  let t;
-  const evs = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
-  const finish = (skipped) => {
-    clearTimeout(t); evs.forEach(n => removeEventListener(n, onSkip, true));
-    root.classList.remove('intro'); root.classList.add(skipped ? 'intro-skip' : 'intro-done'); tcColor();
+  const enter = sound => {
+    if (!root.classList.contains('intro')) return;
+    try { sessionStorage.setItem('dn-entered', '1'); } catch (e) {}
+    removeEventListener('keydown', onKey, true); removeEventListener('pointerdown', onTap, true);
+    root.classList.remove('intro', 'ff'); root.classList.add('intro-skip', 'intro-out'); tcColor();
+    document.dispatchEvent(new CustomEvent('dn:enter', { detail: { sound } }));
   };
-  function onSkip(e) { if (e.type === 'wheel') e.preventDefault(); finish(true); }   // 第一下只負責跳過，下一下才開始捲
-  evs.forEach(n => addEventListener(n, onSkip, { capture: true, passive: n !== 'wheel' }));
-  t = setTimeout(() => finish(false), 3200);   // 與 v5.css 的開場時間軸一致
+  function onKey(e) {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    if (e.target.closest && e.target.closest('.gate')) return;      // 焦點在按鈕上：交給按鈕自己
+    e.preventDefault(); enter('on');
+  }
+  function onTap(e) { if (!(e.target.closest && e.target.closest('.gate'))) root.classList.add('ff'); }   // 點畫面＝快轉到 Enter
+  addEventListener('keydown', onKey, true);
+  addEventListener('pointerdown', onTap, true);
+  document.querySelectorAll('[data-enter]').forEach(b => b.addEventListener('click', () => enter(b.dataset.enter)));
 })();
 </script>
 <section class="mod reveal ">
@@ -143,8 +158,8 @@
   <p><a href="https://www.instagram.com/denuit_taipei/" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/denuitTaipei/" target="_blank" rel="noopener">Facebook</a></p>
   <p class="lang"><a href="../zh/index.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW" aria-current="true">中文</a><span aria-hidden="true"> · </span><a href="../en/index.html" hreflang="en" lang="en">English</a></p>
   <p class="word">我們從夜出發。</p>
-  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.3</span></p>
+  <p class="fine">© 2026 <span class="dn">de nuit</span> · <span class="dn">v6.4</span></p>
 </footer>
-<script src="../assets/js/v5.js?v=6.3"></script>
+<script src="../assets/js/v5.js?v=6.4"></script>
 </body>
 </html>
