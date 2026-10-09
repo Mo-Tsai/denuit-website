@@ -240,7 +240,7 @@ body.menu-open{overflow:hidden}
 .w .n small{font-size:11px;letter-spacing:.06em;color:var(--text-soft);white-space:nowrap}
 .w .v,.w .p{flex:none;text-align:right;font-variant-numeric:tabular-nums lining-nums;font-size:13px}
 .w .v{width:3.2em;color:var(--text)}
-.w .p{width:6.4em;color:var(--text-bright)}
+.w .p{width:6.9em;color:var(--text-bright)}
 :lang(zh) .wl,:lang(zh) .wl .n{letter-spacing:0}
 :lang(zh) .wl .wl-note{letter-spacing:.06em}
 :lang(zh) .wl-country summary{font-style:normal;letter-spacing:.12em}
