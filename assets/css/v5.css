@@ -189,7 +189,7 @@ body.menu-open{overflow:hidden}
 .mod.glass-head{padding-top:var(--gap)}
 .mod.glass{padding-top:9vh}
 .mod.glass h2{font-size:21px}
-.mod .meta-l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin:-.2em auto 1.2em}
+.mod .meta-l{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin:-.2em auto 1.2em}   /* v6.14：產區・品種改字標金（客人 Arthur 建議，Mo 同意） */
 :lang(zh) .mod .meta-l{letter-spacing:.12em}
 :lang(zh) .mod h2 [lang="fr"]{letter-spacing:0}
 
