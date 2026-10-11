@@ -288,3 +288,13 @@ body.menu-open{overflow:hidden}
   .neon,.neon .tube{animation:none!important}
   .intro .gate{animation:none;opacity:1;visibility:visible}
 }
+
+/* ── v6.17：照片用原圖比例（Amanda 10/11）──
+   .native：不裁切（空間的公共用餐區與包廂、消息頁的獲獎圖；團隊照不會被切掉人）；img 上有 width／height，載入前就留好位置
+   .wide：空間橫幅在大螢幕放寬（欄寬 34rem 放不出波浪天花與整間的大器感）；手機上就是欄寬、維持橫幅比例 */
+.mod figure.native{aspect-ratio:auto}
+.mod figure.native img{height:auto}
+.mod figure.wide{max-width:none}
+@media (min-width:900px){
+  .mod figure.wide{width:min(calc(100vw - 80px),48rem);position:relative;left:50%;transform:translateX(-50%)}
+}
