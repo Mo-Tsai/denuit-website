@@ -1,13 +1,14 @@
-/* de nuit — site v5：一道光（捲動進度）／淡入／目錄／頁首捲動後加底／聲音／開場 Enter（v6.4）／GA4 事件（v6.4） */
+/* de nuit — site v5：一道光（捲動進度）／淡入／目錄／頁首捲動後加底／聲音／開場自動進站（v6.21）／GA4 事件（v6.4） */
 (() => {
   const root = document.documentElement;
   const lang = (root.lang || '').startsWith('zh') ? 'zh' : 'en';
   /* GA4：產生器沒填 GA4_ID 就沒有 gtag，這裡什麼都不送。參數只有語言、有無聲音、連結種類，不收個資 */
   const track = (name, params) => { try { if (typeof window.gtag === 'function') window.gtag('event', name, Object.assign({ lang }, params)); } catch (e) {} };
-  /* 開場 Enter：首頁開場還停著（.intro）的時候，後面的東西先不能用 Tab 進去；
-     其他頁（或開場已經過了）就記一筆「這個分頁進過站」，回首頁不再擋 */
+  /* 開場：首頁開場還在播（.intro）的時候，後面的東西先不能用 Tab 進去；
+     其他頁（或開場已經過了）就記一筆「這個分頁進過站」，回首頁不再播。
+     v6.21：頁首不鎖——開場期間「訂位」要點得到（目錄／聲音／語言由 CSS visibility:hidden 藏著） */
   const gated = root.classList.contains('intro');
-  const behind = () => document.querySelectorAll('header.top, .overlay, footer, main > :not(.hero)');
+  const behind = () => document.querySelectorAll('.overlay, footer, main > :not(.hero)');
   if (gated) behind().forEach(el => el.setAttribute('inert', ''));
   else { try { sessionStorage.setItem('dn-entered', '1'); } catch (e) {} }
 
@@ -17,10 +18,15 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   const overlay = document.querySelector('.overlay');
+  const menuBtn = document.querySelector('header.top .menu-btn'), closeBtn = overlay.querySelector('.close');
   const setMenu = open => {
+    const was = document.body.classList.contains('menu-open');
     document.body.classList.toggle('menu-open', open);
     overlay.setAttribute('aria-hidden', !open);
     document.querySelectorAll('.menu-btn').forEach(x => x.setAttribute('aria-expanded', open));
+    /* v6.21：開啟時焦點移到「關閉」，關閉時還給「目錄」（關著時 .overlay 是 visibility:hidden，Tab 進不去） */
+    if (open && !was && closeBtn) closeBtn.focus({ preventScroll: true });
+    if (!open && was && menuBtn && overlay.contains(document.activeElement)) menuBtn.focus({ preventScroll: true });
   };
   document.querySelectorAll('[data-menu]').forEach(b => b.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open'))));
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
@@ -48,17 +54,16 @@
     btns.forEach(b => b.addEventListener('click', () => { if (root.classList.contains('sound-on')) { stop(); save('off'); } else { play(); save('on'); } }));
     document.addEventListener('visibilitychange', () => { if (!root.classList.contains('sound-on')) return; document.hidden ? bgm.pause() : bgm.play().catch(() => {}); });
     let want = false; try { want = localStorage.getItem('dn-sound') === 'on'; } catch (e) {}
-    if (want && !gated) play();                 // 換頁後接著播；瀏覽器擋下就維持關閉；開場停著時等 Enter
-    /* Enter＝開聲音進站（配樂 2.5 秒淡入）；「不開聲音進入」＝進站不播。聲音開關跟著這個選擇 */
-    document.addEventListener('dn:enter', e => {
-      if (e.detail.sound === 'on') { render(true); play(); save('on'); }
-      else { if (!bgm.paused) stop(); else render(false); save('off'); }
-    });
+    if (want && !gated) play();                 // 換頁後接著播；瀏覽器擋下就維持關閉；開場播的時候不播
+    /* v6.21：開場播完自動進站，一律不開聲音（瀏覽器也不准沒手勢就出聲）；要聽的人按標語下方的「開啟聲音」或頁首聲音鍵。
+       不改寫客人記住的選擇（dn-sound）：上次開著的人，換到內頁時照舊會試著接著播 */
+    document.addEventListener('dn:enter', () => { if (!bgm.paused) stop(); else render(false); });
   }
   document.addEventListener('dn:enter', e => {
     behind().forEach(el => el.removeAttribute('inert'));
-    const h1 = document.querySelector('.hero h1'); if (h1) h1.focus({ preventScroll: true });   // 焦點留在頁面開頭，不掉到 body
-    track('enter_site', { sound: e.detail.sound === 'on' ? 'on' : 'off' });
+    const h1 = document.querySelector('.hero h1'), ae = document.activeElement;
+    if (h1 && (!ae || ae === document.body)) h1.focus({ preventScroll: true });   // 焦點留在頁面開頭；客人已經 Tab 到頁首「訂位」就不搶
+    track('enter_site', { sound: 'off', how: e.detail.how === 'skip' ? 'skip' : 'auto' });
   });
   /* 訂位點擊：頁首「訂位」、各段「線上訂位」、目錄裡的訂位，以及任何 inline 連結（訂位頁裡的 iframe 是別人的網域，點不到） */
   document.addEventListener('click', e => {
